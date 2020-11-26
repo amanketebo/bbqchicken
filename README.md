@@ -2,8 +2,8 @@
 
 Small SwiftUI app that uses NBA data to display head to head career stats
 
-## 🤔 What's up with the project name?
-Shoutout to the most dominate NBA player ever, Shaquille O'Neal, for coining the phrase 🙌🏽
+## What's up with the project name? 😂
+Shoutout to Shaquille O'Neal for coining the phrase 🙌🏽
 
 [Urban Dictionary](https://www.urbandictionary.com/define.php?term=Barbeque%20Chicken)
 
