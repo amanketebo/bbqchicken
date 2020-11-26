@@ -7,7 +7,7 @@ Shoutout to Shaquille O'Neal for coining the phrase 🙌🏽
 
 [Urban Dictionary](https://www.urbandictionary.com/define.php?term=Barbeque%20Chicken)
 
-[Inside the NBA Clip](https://www.youtube.com/watch?v=5xkX8C4i17Q)
+[Inside the NBA Clip](https://www.youtube.com/watch?v=-f_e99slJ30)
 
 ## Quick Look
 ![Demo showing a few screens](Images/demo.gif)
