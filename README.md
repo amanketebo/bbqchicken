@@ -10,7 +10,7 @@ Shoutout to the most dominate NBA player ever, Shaquille O'Neal, for coining the
 [Inside the NBA Clip](https://www.youtube.com/watch?v=5xkX8C4i17Q)
 
 ## Quick Look
-![Empty Screen](Images/empty-main-screen.png 250x)
-![Populated Screen](Images/populated-main-screen.png 250x)
-![All NBA Players Screen](Images/all-nba-players-screen.png 250x)
+![Empty Screen](Images/empty-main-screen.png)s
+![Populated Screen](Images/populated-main-screen.png)
+![All NBA Players Screen](Images/all-nba-players-screen.png)
 
