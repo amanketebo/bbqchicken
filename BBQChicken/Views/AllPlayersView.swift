@@ -18,13 +18,14 @@ struct AllPlayersView: View {
     var body: some View {
         NavigationView {
             let navigationBarTitle = "⛹🏽‍♂️ All NBA Players"
-            let onAppear = { self.viewModel.fetchAllPlayersIfNeeded() }
 
             switch viewModel.loadState {
             case .loading:
                 Text("Loading...")
                     .navigationBarTitle(navigationBarTitle)
-                    .onAppear(perform: onAppear)
+                    .onAppear(perform: {
+                                self.viewModel.fetchAllPlayersIfNeeded()
+                    })
 
             case .loaded(let allPlayers):
                 VStack {
@@ -42,7 +43,6 @@ struct AllPlayersView: View {
                     }
                 }
                 .navigationBarTitle(navigationBarTitle)
-                .onAppear(perform: onAppear)
             }
         }
     }
