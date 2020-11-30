@@ -25,7 +25,9 @@ struct VersusView: View {
                         VersusPlayerView(viewModel: playerViewModel)
                     })
                     .sheet(isPresented: $isPlayerOneAllPlayersViewPresented) {
-                        AllPlayersView(viewModel: viewModel, updatingPlayer: .one)
+                        AllPlayersView(onPlayerSelection: { newPlayer in
+                            viewModel.playerOne = newPlayer
+                        })
                     }
                     Spacer()
                 }
@@ -41,7 +43,9 @@ struct VersusView: View {
                         VersusPlayerView(viewModel: playerViewModel)
                     })
                     .sheet(isPresented: $isPlayerTwoAllPlayersViewPresented) {
-                        AllPlayersView(viewModel: viewModel, updatingPlayer: .two)
+                        AllPlayersView(onPlayerSelection: { newPlayer in
+                            viewModel.playerTwo = newPlayer
+                        })
                     }
                     Spacer()
                 }
