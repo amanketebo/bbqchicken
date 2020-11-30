@@ -26,7 +26,7 @@ struct VersusPlayerViewModel {
 
     init(player: Player?) {
         let firstInitial = player?.firstName?.first.flatMap { String($0) } ?? ""
-        let lastInitial = player?.lastName?.last.flatMap { String($0) } ?? ""
+        let lastInitial = player?.lastName?.first.flatMap { String($0) } ?? ""
         initialsText = firstInitial.capitalized + lastInitial.capitalized
 
         fullNameText = player?.fullName ?? "Pick a NBA Player"
