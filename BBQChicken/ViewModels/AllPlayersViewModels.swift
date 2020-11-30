@@ -8,12 +8,16 @@
 import Foundation
 import Combine
 
+enum LoadState<T> {
+    case loading
+    case loaded(T)
+}
+
 class AllPlayersViewModel: ObservableObject {
     // MARK: - Properties
 
-    @Published var filteredPlayers: [Player] = []
+    @Published var loadState: LoadState<[Player]> = .loading
 
-    private var allPlayers: [Player] = StatsService.allPlayers
     private var statsService: StatsServiceProtocol
     private var subscriptions = Set<AnyCancellable>()
 
@@ -24,8 +28,8 @@ class AllPlayersViewModel: ObservableObject {
     }
 
     func fetchAllPlayersIfNeeded() {
-        guard allPlayers.isEmpty else {
-            filteredPlayers = allPlayers
+        guard StatsService.allPlayers.isEmpty else {
+            loadState = .loaded(StatsService.allPlayers)
             return
         }
 
@@ -35,7 +39,7 @@ class AllPlayersViewModel: ObservableObject {
                 print(completion)
             } receiveValue: { allPlayers in
                 StatsService.allPlayers = allPlayers
-                self.filteredPlayers = allPlayers
+                self.loadState = .loaded(allPlayers)
             }
             .store(in: &subscriptions)
     }
@@ -44,12 +48,11 @@ class AllPlayersViewModel: ObservableObject {
         let searchTextWithoutSpaces = searchText.trimmingCharacters(in: .whitespaces).lowercased()
 
         if searchText.isEmpty {
-            filteredPlayers = allPlayers
+            loadState = .loaded(StatsService.allPlayers)
         } else {
-            filteredPlayers = allPlayers.filter {
+            loadState = .loaded(StatsService.allPlayers.filter {
                 $0.fullName.trimmingCharacters(in: .whitespaces).lowercased().contains(searchTextWithoutSpaces)
-            }
+            })
         }
     }
 }
-

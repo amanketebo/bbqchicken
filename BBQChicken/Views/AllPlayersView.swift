@@ -17,24 +17,33 @@ struct AllPlayersView: View {
 
     var body: some View {
         NavigationView {
-            VStack {
-                SearchBar(placeholder: "Search",
-                          onTextUpdate: { updatedText in
-                    viewModel.filterPlayers(for: updatedText)
-                })
-                List(viewModel.filteredPlayers, id: \.id) { player in
-                    let playerRow = PlayerRow(player: player)
-                    Text(playerRow.text)
-                        .onTapGesture {
-                            onPlayerSelection?(player)
-                            presentationMode.wrappedValue.dismiss()
-                        }
+            let navigationBarTitle = "⛹🏽‍♂️ All NBA Players"
+            let onAppear = { self.viewModel.fetchAllPlayersIfNeeded() }
+
+            switch viewModel.loadState {
+            case .loading:
+                Text("Loading...")
+                    .navigationBarTitle(navigationBarTitle)
+                    .onAppear(perform: onAppear)
+
+            case .loaded(let allPlayers):
+                VStack {
+                    SearchBar(placeholder: "Search",
+                              onTextUpdate: { updatedText in
+                        viewModel.filterPlayers(for: updatedText)
+                    })
+                    List(allPlayers, id: \.id) { player in
+                        let playerRow = PlayerRow(player: player)
+                        Text(playerRow.text)
+                            .onTapGesture {
+                                onPlayerSelection?(player)
+                                presentationMode.wrappedValue.dismiss()
+                            }
+                    }
                 }
-                .onAppear {
-                    self.viewModel.fetchAllPlayersIfNeeded()
-                }
+                .navigationBarTitle(navigationBarTitle)
+                .onAppear(perform: onAppear)
             }
-            .navigationBarTitle("⛹🏽‍♂️ All NBA Players")
         }
     }
 }
