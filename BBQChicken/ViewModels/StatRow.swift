@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct StatRowViewModel: Identifiable {
+struct StatRow: Identifiable {
     var title: String
     var detail: String
 
@@ -16,7 +16,7 @@ struct StatRowViewModel: Identifiable {
     }
 
     init(stat: Stat) {
-        let statAbbreviation = StatRowViewModel.abbreviation(for: stat)
+        let statAbbreviation = StatRow.abbreviation(for: stat)
 
         switch stat {
         case .pointsAverage(let pointsPerGame):
