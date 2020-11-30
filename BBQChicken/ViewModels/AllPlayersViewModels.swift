@@ -13,7 +13,7 @@ class AllPlayersViewModel: ObservableObject {
 
     @Published var filteredPlayers: [Player] = []
 
-    private var allPlayers: [Player] = []
+    private var allPlayers: [Player] = StatsService.allPlayers
     private var statsService: StatsServiceProtocol
     private var subscriptions = Set<AnyCancellable>()
 
@@ -34,7 +34,7 @@ class AllPlayersViewModel: ObservableObject {
             .sink { completion in
                 print(completion)
             } receiveValue: { allPlayers in
-                self.allPlayers = allPlayers
+                StatsService.allPlayers = allPlayers
                 self.filteredPlayers = allPlayers
             }
             .store(in: &subscriptions)

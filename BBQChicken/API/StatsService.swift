@@ -23,6 +23,8 @@ class StatsService: ObservableObject, StatsServiceProtocol {
 
     let session = URLSession(configuration: .default)
 
+    static var allPlayers: [Player] = []
+
     // MARK: - Fetch
 
     var allPlayersPublisher: AnyPublisher<[Player], Error> {
