@@ -23,9 +23,9 @@ struct AllPlayersView: View {
             case .loading:
                 Text("Loading...")
                     .navigationBarTitle(navigationBarTitle)
-                    .onAppear(perform: {
-                                self.viewModel.fetchAllPlayersIfNeeded()
-                    })
+                    .onAppear {
+                        self.viewModel.fetchAllPlayersIfNeeded()
+                    }
 
             case .loaded(let allPlayers):
                 VStack {
