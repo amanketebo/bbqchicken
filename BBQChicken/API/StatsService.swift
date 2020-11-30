@@ -23,15 +23,16 @@ class StatsService: ObservableObject, StatsServiceProtocol {
 
     let session = URLSession(configuration: .default)
 
+    static var allPlayers: [Player] = []
+
     // MARK: - Fetch
 
     var allPlayersPublisher: AnyPublisher<[Player], Error> {
         let playerIndexRequest = RequestFactory.request(for: .playerIndex)!
 
         return session.dataTaskPublisher(for: playerIndexRequest)
-            .tryMap { response in
-                try JSONDecoder().decode(PlayerIndexResponse.self, from: response.data)
-            }
+            .map(\.data)
+            .decode(type: PlayerIndexResponse.self, decoder: JSONDecoder())
             .map { playerIndexResponse in
                 playerIndexResponse.resultSets?.first?.rowSet.compactMap { Player(rowSetInfo: $0) } ?? []
             }

@@ -31,8 +31,8 @@ struct VersusPlayerView: View {
                     .foregroundColor(.black)
             }
 
-            if !viewModel.statRowViewModels.isEmpty {
-                ForEach(viewModel.statRowViewModels) { viewModel in
+            if !viewModel.statRows.isEmpty {
+                ForEach(viewModel.statRows) { viewModel in
                     HStack {
                         Text(viewModel.title)
                             .fontWeight(.medium)

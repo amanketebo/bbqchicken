@@ -8,18 +8,11 @@
 import SwiftUI
 
 struct AllPlayersView: View {
-    // MARK: - Types
-
-    enum UpdatingPlayer {
-        case one
-        case two
-    }
-
     // MARK: - Properties
 
-    @ObservedObject var viewModel: VersusViewModel
-    var updatingPlayer: UpdatingPlayer
-    
+    var onPlayerSelection: ((Player) -> Void)?
+
+    @ObservedObject private var viewModel = AllPlayersViewModel(statsService: StatsService())
     @Environment(\.presentationMode) private var presentationMode
 
     var body: some View {
@@ -30,10 +23,10 @@ struct AllPlayersView: View {
                     viewModel.filterPlayers(for: updatedText)
                 })
                 List(viewModel.filteredPlayers, id: \.id) { player in
-                    let allPlayerViewModel = AllPlayerViewModel(player: player)
-                    Text(allPlayerViewModel.text)
+                    let playerRow = PlayerRow(player: player)
+                    Text(playerRow.text)
                         .onTapGesture {
-                            updatePlayer(with: player)
+                            onPlayerSelection?(player)
                             presentationMode.wrappedValue.dismiss()
                         }
                 }
@@ -44,23 +37,10 @@ struct AllPlayersView: View {
             .navigationBarTitle("⛹🏽‍♂️ All NBA Players")
         }
     }
-
-    private func updatePlayer(with newPlayer: Player) {
-        switch updatingPlayer {
-        case .one:
-            viewModel.playerOne = newPlayer
-
-        case .two:
-            viewModel.playerTwo = newPlayer
-        }
-    }
 }
 
 struct AllPlayersView_Previews: PreviewProvider {
     static var previews: some View {
-        let viewModel = VersusViewModel(playerOne: nil,
-                                        playerTwo: nil,
-                                        statsService: MockStatsService())
-        AllPlayersView(viewModel: viewModel, updatingPlayer: .one)
+        AllPlayersView(onPlayerSelection: nil)
     }
 }

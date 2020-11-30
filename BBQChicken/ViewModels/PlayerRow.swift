@@ -1,5 +1,5 @@
 //
-//  AllPlayerViewModel.swift
+//  PlayerRow.swift
 //  BBQChicken
 //
 //  Created by Amanuel Ketebo on 11/25/20.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct AllPlayerViewModel {
+struct PlayerRow {
     var text: String
 
     init(player: Player) {

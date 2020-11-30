@@ -19,14 +19,14 @@ struct VersusPlayerViewModel {
 
     let initialsText: String
     let fullNameText:  String
-    let statRowViewModels: [StatRowViewModel]
+    let statRows: [StatRow]
     let layout: Layout
     
     // MARK: - Init
 
     init(player: Player?) {
         let firstInitial = player?.firstName?.first.flatMap { String($0) } ?? ""
-        let lastInitial = player?.lastName?.last.flatMap { String($0) } ?? ""
+        let lastInitial = player?.lastName?.first.flatMap { String($0) } ?? ""
         initialsText = firstInitial.capitalized + lastInitial.capitalized
 
         fullNameText = player?.fullName ?? "Pick a NBA Player"
@@ -35,8 +35,8 @@ struct VersusPlayerViewModel {
         player?.pointsPerGame.flatMap { availableStats.append(.pointsAverage($0)) }
         player?.reboundsPerGame.flatMap { availableStats.append(.reboundsAverage($0)) }
         player?.assistsPerGame.flatMap { availableStats.append(.assistsAverage($0)) }
-        statRowViewModels = availableStats.map { StatRowViewModel(stat: $0) }
+        statRows = availableStats.map { StatRow(stat: $0) }
 
-        layout = statRowViewModels.isEmpty ? .expanded : .compact
+        layout = statRows.isEmpty ? .expanded : .compact
     }
 }
