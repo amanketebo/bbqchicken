@@ -9,7 +9,6 @@ import Foundation
 import Combine
 
 protocol StatsServiceProtocol {
-    var allPlayers: [Player] { get set }
     var allPlayersPublisher: AnyPublisher<[Player], Error> { get }
 }
 
@@ -23,11 +22,6 @@ class StatsService: ObservableObject, StatsServiceProtocol {
     // MARK: - Properties
 
     static var cachedAllPlayers: [Player] = []
-
-    var allPlayers: [Player] {
-        get { StatsService.cachedAllPlayers }
-        set { StatsService.cachedAllPlayers = newValue }
-    }
 
     let session = URLSession(configuration: .default)
 

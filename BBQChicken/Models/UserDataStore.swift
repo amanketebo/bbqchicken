@@ -8,15 +8,16 @@
 import Foundation
 
 class UserDataStore {
+    // MARK: - Types
+
     private enum Keys {
         static let recentlySelectedPlayers = "recentlySelectedPlayers"
     }
 
-    let userDefaults: UserDefaults
+    // MARK: - Properties
 
-    init(userDefaults: UserDefaults) {
-        self.userDefaults = userDefaults
-    }
+    let userDefaults: UserDefaults
+    let recentSelectedPlayersLimit: Int
 
     var recentlySelectedPlayers: [Player] {
         guard let playersData = userDefaults.data(forKey: Keys.recentlySelectedPlayers),
@@ -24,11 +25,21 @@ class UserDataStore {
             return []
         }
 
-        return recentlySelectedPlayers
+        return recentlySelectedPlayers.reversed()
     }
 
+    // MARK: - Init
+
+    init(userDefaults: UserDefaults,
+         recentSelectedPlayersLimit: Int = 3) {
+        self.userDefaults = userDefaults
+        self.recentSelectedPlayersLimit = recentSelectedPlayersLimit
+    }
+
+    // MARK: - Saving
+
     func save(_ player: Player) {
-        var savedPlayers = self.recentlySelectedPlayers
+        var savedPlayers = Array(self.recentlySelectedPlayers.suffix(recentSelectedPlayersLimit - 1))
         savedPlayers.append(player)
 
         do {

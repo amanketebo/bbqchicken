@@ -8,12 +8,16 @@
 import Foundation
 
 struct StatRow: Identifiable {
+    // MARK: - Properties
+
     var title: String
     var detail: String
 
     var id: String {
         return title + detail
     }
+
+    // MARK: - Init
 
     init(stat: Stat) {
         let statAbbreviation = StatRow.abbreviation(for: stat)

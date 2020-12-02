@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct VersusPlayerView: View {
+    // MARK: - Properties
+    
     var viewModel: VersusPlayerViewModel
 
     var body: some View {
