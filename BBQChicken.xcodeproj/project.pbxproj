@@ -83,18 +83,6 @@
 			path = API;
 			sourceTree = "<group>";
 		};
-		CA26131225680E23008E3695 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				CA425F102566F40E00CF944F /* VersusView.swift */,
-				CAC242CE256EC7D1001CCC80 /* VersusPlayerView.swift */,
-				CAF0F044256EFEF90083D7E3 /* InitialsView.swift */,
-				CAC242C1256EB9FF001CCC80 /* AllPlayersView.swift */,
-				CAE1AA22256F0CA9008BF9AF /* SearchBar.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
 		CA425F022566F40E00CF944F = {
 			isa = PBXGroup;
 			children = (
@@ -115,10 +103,8 @@
 			isa = PBXGroup;
 			children = (
 				CA425F0E2566F40E00CF944F /* BBQChickenApp.swift */,
-				CA26131025680DE9008E3695 /* API */,
-				CAE7EB31256C4F940088701E /* Models */,
-				CAE7EB3A256C51CD0088701E /* ViewModels */,
-				CA26131225680E23008E3695 /* Views */,
+				CAE7EB31256C4F940088701E /* Common */,
+				CAF075AE25782DED009800E5 /* Views */,
 				CA425F122566F41100CF944F /* Assets.xcassets */,
 				CA425F172566F41100CF944F /* Info.plist */,
 				CA425F142566F41100CF944F /* Preview Content */,
@@ -143,27 +129,57 @@
 			path = Mocks;
 			sourceTree = "<group>";
 		};
-		CAE7EB31256C4F940088701E /* Models */ = {
+		CAE7EB31256C4F940088701E /* Common */ = {
 			isa = PBXGroup;
 			children = (
 				CAE7EB2E256C4F610088701E /* Player.swift */,
 				CAE7EB33256C4FB90088701E /* Stat.swift */,
 				CA002B012576AC2F00628E2E /* UserDataStore.swift */,
 				CA002B042576E70F00628E2E /* PlayersCache.swift */,
+				CA26131025680DE9008E3695 /* API */,
 			);
-			path = Models;
+			path = Common;
 			sourceTree = "<group>";
 		};
-		CAE7EB3A256C51CD0088701E /* ViewModels */ = {
+		CAE7EB3A256C51CD0088701E /* AllPlayers */ = {
+			isa = PBXGroup;
+			children = (
+				CABBE30325758C08004514F5 /* AllPlayersViewModels.swift */,
+				CAC242C1256EB9FF001CCC80 /* AllPlayersView.swift */,
+				CAE1AA22256F0CA9008BF9AF /* SearchBar.swift */,
+			);
+			path = AllPlayers;
+			sourceTree = "<group>";
+		};
+		CAF075A825782D67009800E5 /* Versus */ = {
 			isa = PBXGroup;
 			children = (
 				CAE7EB37256C50510088701E /* VersusViewModel.swift */,
-				CAC16F30256C5A180020B261 /* VersusPlayerViewModel.swift */,
-				CAC16F2D256C58980020B261 /* StatRow.swift */,
-				CAE1AA1F256F0A4F008BF9AF /* PlayerRow.swift */,
-				CABBE30325758C08004514F5 /* AllPlayersViewModels.swift */,
+				CA425F102566F40E00CF944F /* VersusView.swift */,
 			);
-			path = ViewModels;
+			path = Versus;
+			sourceTree = "<group>";
+		};
+		CAF075AA25782D87009800E5 /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				CAC16F30256C5A180020B261 /* VersusPlayerViewModel.swift */,
+				CAC242CE256EC7D1001CCC80 /* VersusPlayerView.swift */,
+				CAF0F044256EFEF90083D7E3 /* InitialsView.swift */,
+				CAE1AA1F256F0A4F008BF9AF /* PlayerRow.swift */,
+				CAC16F2D256C58980020B261 /* StatRow.swift */,
+			);
+			path = Player;
+			sourceTree = "<group>";
+		};
+		CAF075AE25782DED009800E5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CAF075A825782D67009800E5 /* Versus */,
+				CAF075AA25782D87009800E5 /* Player */,
+				CAE7EB3A256C51CD0088701E /* AllPlayers */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
