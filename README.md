@@ -1,6 +1,6 @@
 # 🍗 BBQ Chicken
 
-Small SwiftUI app that uses NBA data to display head to head career stats
+Small SwiftUI app that uses NBA data to display head-to-head career stats
 
 ## What's up with the project name?
 Shoutout to Shaquille O'Neal for coining the phrase 🙌🏽
