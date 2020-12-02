@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CA002B022576AC2F00628E2E /* UserDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA002B012576AC2F00628E2E /* UserDataStore.swift */; };
+		CA002B052576E70F00628E2E /* PlayersCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA002B042576E70F00628E2E /* PlayersCache.swift */; };
 		CA26130725680D53008E3695 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA26130625680D53008E3695 /* Endpoint.swift */; };
 		CA26130A25680D71008E3695 /* RequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA26130925680D71008E3695 /* RequestFactory.swift */; };
 		CA26130E25680D9A008E3695 /* PlayerIndexResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA26130D25680D9A008E3695 /* PlayerIndexResponse.swift */; };
@@ -33,6 +34,7 @@
 
 /* Begin PBXFileReference section */
 		CA002B012576AC2F00628E2E /* UserDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataStore.swift; sourceTree = "<group>"; };
+		CA002B042576E70F00628E2E /* PlayersCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayersCache.swift; sourceTree = "<group>"; };
 		CA26130625680D53008E3695 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		CA26130925680D71008E3695 /* RequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestFactory.swift; sourceTree = "<group>"; };
 		CA26130D25680D9A008E3695 /* PlayerIndexResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerIndexResponse.swift; sourceTree = "<group>"; };
@@ -86,8 +88,8 @@
 			children = (
 				CA425F102566F40E00CF944F /* VersusView.swift */,
 				CAC242CE256EC7D1001CCC80 /* VersusPlayerView.swift */,
-				CAC242C1256EB9FF001CCC80 /* AllPlayersView.swift */,
 				CAF0F044256EFEF90083D7E3 /* InitialsView.swift */,
+				CAC242C1256EB9FF001CCC80 /* AllPlayersView.swift */,
 				CAE1AA22256F0CA9008BF9AF /* SearchBar.swift */,
 			);
 			path = Views;
@@ -147,6 +149,7 @@
 				CAE7EB2E256C4F610088701E /* Player.swift */,
 				CAE7EB33256C4FB90088701E /* Stat.swift */,
 				CA002B012576AC2F00628E2E /* UserDataStore.swift */,
+				CA002B042576E70F00628E2E /* PlayersCache.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -232,6 +235,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA002B052576E70F00628E2E /* PlayersCache.swift in Sources */,
 				CA26130E25680D9A008E3695 /* PlayerIndexResponse.swift in Sources */,
 				CAF0F045256EFEF90083D7E3 /* InitialsView.swift in Sources */,
 				CAE7EB34256C4FB90088701E /* Stat.swift in Sources */,
