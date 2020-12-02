@@ -10,8 +10,8 @@ import SwiftUI
 struct AllPlayersView: View {
     // MARK: - Properties
 
+    @ObservedObject var viewModel: AllPlayersViewModel
     var onPlayerSelection: ((Player) -> Void)?
-    @ObservedObject var viewModel = AllPlayersViewModel(statsService: StatsService())
 
     @Environment(\.presentationMode) private var presentationMode
 
@@ -28,9 +28,7 @@ struct AllPlayersView: View {
                             let playerRow = PlayerRow(player: recentPlayer)
                             Text(playerRow.text)
                                 .onTapGesture {
-                                    onPlayerSelection?(recentPlayer)
-                                    viewModel.save(recentPlayer)
-                                    presentationMode.wrappedValue.dismiss()
+                                    savePlayerAndDismiss(recentPlayer)
                                 }
                         }
                     }
@@ -40,13 +38,12 @@ struct AllPlayersView: View {
                             let playerRow = PlayerRow(player: player)
                             Text(playerRow.text)
                                 .onTapGesture {
-                                    onPlayerSelection?(player)
-                                    viewModel.save(player)
-                                    presentationMode.wrappedValue.dismiss()
+                                    savePlayerAndDismiss(player)
                                 }
                         }
                     }
                 }
+                .listStyle(InsetGroupedListStyle())
                 .onAppear {
                     self.viewModel.populatePlayers()
                 }
@@ -54,11 +51,37 @@ struct AllPlayersView: View {
             .navigationBarTitle("⛹🏽‍♂️ All NBA Players")
         }
     }
+
+    func savePlayerAndDismiss(_ player: Player) {
+        onPlayerSelection?(player)
+        viewModel.save(player)
+        presentationMode.wrappedValue.dismiss()
+    }
 }
 
 struct AllPlayersView_Previews: PreviewProvider {
     static var previews: some View {
-        let allPlayersViewModel = AllPlayersViewModel(statsService: MockStatsService())
-        AllPlayersView(onPlayerSelection: nil, viewModel: allPlayersViewModel)
+        let playersCache = PlayersCache(allPlayers: [Player(id: 1,
+                                                            firstName: "Kobe",
+                                                            lastName: "Bryant",
+                                                            pointsPerGame: 25,
+                                                            reboundsPerGame: 5,
+                                                            assistsPerGame: 5),
+                                                     Player(id: 2,
+                                                            firstName: "Dwayne",
+                                                            lastName: "Wade",
+                                                            pointsPerGame: 20,
+                                                            reboundsPerGame: 5,
+                                                            assistsPerGame: 4),
+                                                     Player(id: 3,
+                                                            firstName: "James",
+                                                            lastName: "Harden",
+                                                            pointsPerGame: 28,
+                                                            reboundsPerGame: 1,
+                                                            assistsPerGame: 0)])
+        let allPlayersViewModel = AllPlayersViewModel(statsService: MockStatsService(),
+                                                      playersCache: playersCache)
+        AllPlayersView(viewModel: allPlayersViewModel,
+                       onPlayerSelection: nil)
     }
 }

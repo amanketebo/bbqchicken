@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct InitialsView: View {
+    // MARK: - Properties
+    
     var text: String
 
     var body: some View {

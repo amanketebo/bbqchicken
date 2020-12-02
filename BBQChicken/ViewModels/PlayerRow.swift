@@ -8,7 +8,11 @@
 import Foundation
 
 struct PlayerRow {
+    //  MARK: - Properties
+
     var text: String
+
+    // MARK: - Init
 
     init(player: Player) {
         let lastNameFirstName = [player.lastName, player.firstName].compactMap { return $0 }.joined(separator: ", ")

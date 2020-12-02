@@ -10,11 +10,6 @@ import UIKit
 import SwiftUI
 
 struct SearchBar: UIViewRepresentable {
-    // MARK: - Typealiases
-
-    typealias UIViewType = UISearchBar
-    typealias Coordinator = SearchBarCoordinator
-
     // MARK: - Properties
 
     let placeholder: String
@@ -33,19 +28,22 @@ struct SearchBar: UIViewRepresentable {
 
     func updateUIView(_ uiView: UISearchBar, context: Context) { }
 
-    func makeCoordinator() -> SearchBarCoordinator {
-        return SearchBarCoordinator(searchBar: self)
+    func makeCoordinator() -> Coordinator {
+        return Coordinator(searchBar: self)
+    }
+
+    // MARK: - Coordinator
+
+    class Coordinator: NSObject, UISearchBarDelegate {
+        let searchBar: SearchBar
+
+        init(searchBar: SearchBar) {
+            self.searchBar = searchBar
+        }
+
+        func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+            self.searchBar.onTextUpdate?(searchText)
+        }
     }
 }
 
-class SearchBarCoordinator: NSObject, UISearchBarDelegate {
-    let searchBar: SearchBar
-
-    init(searchBar: SearchBar) {
-        self.searchBar = searchBar
-    }
-
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        self.searchBar.onTextUpdate?(searchText)
-    }
-}

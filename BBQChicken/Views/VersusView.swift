@@ -8,12 +8,16 @@
 import SwiftUI
 
 struct VersusView: View {
+    // MARK: - Properties
+    
     @ObservedObject var viewModel = VersusViewModel()
 
     @State var isPlayerOneAllPlayersViewPresented = false
     @State var isPlayerTwoAllPlayersViewPresented = false
 
     var body: some View {
+        let edgeInsets = EdgeInsets(top: 25, leading: 0, bottom: 25, trailing: 0)
+
         NavigationView {
             List {
                 HStack {
@@ -25,14 +29,15 @@ struct VersusView: View {
                         VersusPlayerView(viewModel: playerViewModel)
                     })
                     .sheet(isPresented: $isPlayerOneAllPlayersViewPresented) {
-                        AllPlayersView(onPlayerSelection: { newPlayer in
-                            viewModel.playerOne = newPlayer
+                        let allPlayersViewModel = AllPlayersViewModel(statsService: StatsService(),
+                                                                      playersCache: viewModel.allPlayersCache)
+                        AllPlayersView(viewModel: allPlayersViewModel, onPlayerSelection: {
+                            viewModel.playerOne = $0
                         })
                     }
                     Spacer()
                 }
-                .padding(.top, 25)
-                .padding(.bottom, 25)
+                .padding(edgeInsets)
 
                 HStack {
                     Spacer()
@@ -43,14 +48,15 @@ struct VersusView: View {
                         VersusPlayerView(viewModel: playerViewModel)
                     })
                     .sheet(isPresented: $isPlayerTwoAllPlayersViewPresented) {
-                        AllPlayersView(onPlayerSelection: { newPlayer in
-                            viewModel.playerTwo = newPlayer
+                        let allPlayersViewModel = AllPlayersViewModel(statsService: StatsService(),
+                                                                      playersCache: viewModel.allPlayersCache)
+                        AllPlayersView(viewModel: allPlayersViewModel, onPlayerSelection: {
+                            viewModel.playerTwo = $0
                         })
                     }
                     Spacer()
                 }
-                .padding(.top, 25)
-                .padding(.bottom, 25)
+                .padding(edgeInsets)
             }
             .navigationBarTitle("🍗 BBQ Chicken")
         }
@@ -66,11 +72,9 @@ struct VersusView_Previews: PreviewProvider {
                             reboundsPerGame: 5,
                             assistsPerGame: 5)
         let emptyViewModel = VersusViewModel(playerOne: nil,
-                                             playerTwo: nil,
-                                             statsService: MockStatsService())
+                                             playerTwo: nil)
         let fullViewModel = VersusViewModel(playerOne: player,
-                                            playerTwo: player,
-                                            statsService: MockStatsService())
+                                            playerTwo: player)
         Group {
             VersusView(viewModel: emptyViewModel)
                 .previewDevice("iPhone X")
