@@ -11,9 +11,11 @@ import Combine
 class AllPlayersViewModel: ObservableObject {
     // MARK: - Properties
 
-    @Published var filteredPlayers: [Player] = []
+    @Published var recentPlayers: [Player] = []
+    @Published var allPlayers: [Player] = []
 
-    private var allPlayers: [Player] = StatsService.allPlayers
+    var userDataStore = UserDataStore(userDefaults: .standard)
+
     private var statsService: StatsServiceProtocol
     private var subscriptions = Set<AnyCancellable>()
 
@@ -23,9 +25,14 @@ class AllPlayersViewModel: ObservableObject {
         self.statsService = statsService
     }
 
+    func populatePlayers() {
+        recentPlayers = userDataStore.recentlySelectedPlayers
+        allPlayers = statsService.allPlayers
+        fetchAllPlayersIfNeeded()
+    }
+
     func fetchAllPlayersIfNeeded() {
-        guard allPlayers.isEmpty else {
-            filteredPlayers = allPlayers
+        guard statsService.allPlayers.isEmpty else {
             return
         }
 
@@ -34,22 +41,34 @@ class AllPlayersViewModel: ObservableObject {
             .sink { completion in
                 print(completion)
             } receiveValue: { allPlayers in
-                StatsService.allPlayers = allPlayers
-                self.filteredPlayers = allPlayers
+                self.update(allPlayers: allPlayers)
             }
             .store(in: &subscriptions)
     }
 
-    func filterPlayers(for searchText: String) {
+    func filter(for searchText: String) {
         let searchTextWithoutSpaces = searchText.trimmingCharacters(in: .whitespaces).lowercased()
 
         if searchText.isEmpty {
-            filteredPlayers = allPlayers
+            recentPlayers = userDataStore.recentlySelectedPlayers
+            allPlayers = statsService.allPlayers
         } else {
-            filteredPlayers = allPlayers.filter {
-                $0.fullName.trimmingCharacters(in: .whitespaces).lowercased().contains(searchTextWithoutSpaces)
+            let filter: (Player) -> Bool = { player in
+                player.fullName.trimmingCharacters(in: .whitespaces).lowercased().contains(searchTextWithoutSpaces)
             }
+
+            recentPlayers = userDataStore.recentlySelectedPlayers.filter(filter)
+            allPlayers = statsService.allPlayers.filter(filter)
         }
+    }
+
+    func save(_ player: Player) {
+        userDataStore.save(player)
+    }
+
+    private func update(allPlayers: [Player]) {
+        statsService.allPlayers = allPlayers
+        self.allPlayers = allPlayers
     }
 }
 

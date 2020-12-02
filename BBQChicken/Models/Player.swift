@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Player: Hashable {
+struct Player: Hashable, Codable {
     // MARK: - Properties
 
     var id: Int

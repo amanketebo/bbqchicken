@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CA002B022576AC2F00628E2E /* UserDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA002B012576AC2F00628E2E /* UserDataStore.swift */; };
 		CA26130725680D53008E3695 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA26130625680D53008E3695 /* Endpoint.swift */; };
 		CA26130A25680D71008E3695 /* RequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA26130925680D71008E3695 /* RequestFactory.swift */; };
 		CA26130E25680D9A008E3695 /* PlayerIndexResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA26130D25680D9A008E3695 /* PlayerIndexResponse.swift */; };
@@ -31,6 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CA002B012576AC2F00628E2E /* UserDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataStore.swift; sourceTree = "<group>"; };
 		CA26130625680D53008E3695 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		CA26130925680D71008E3695 /* RequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestFactory.swift; sourceTree = "<group>"; };
 		CA26130D25680D9A008E3695 /* PlayerIndexResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerIndexResponse.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 			children = (
 				CAE7EB2E256C4F610088701E /* Player.swift */,
 				CAE7EB33256C4FB90088701E /* Stat.swift */,
+				CA002B012576AC2F00628E2E /* UserDataStore.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -237,6 +240,7 @@
 				CAE1AA23256F0CA9008BF9AF /* SearchBar.swift in Sources */,
 				CABBE30425758C08004514F5 /* AllPlayersViewModels.swift in Sources */,
 				CAC16F31256C5A180020B261 /* VersusPlayerViewModel.swift in Sources */,
+				CA002B022576AC2F00628E2E /* UserDataStore.swift in Sources */,
 				CA26130A25680D71008E3695 /* RequestFactory.swift in Sources */,
 				CA425F112566F40E00CF944F /* VersusView.swift in Sources */,
 				CAC242C2256EB9FF001CCC80 /* AllPlayersView.swift in Sources */,

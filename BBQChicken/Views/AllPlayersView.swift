@@ -11,8 +11,8 @@ struct AllPlayersView: View {
     // MARK: - Properties
 
     var onPlayerSelection: ((Player) -> Void)?
+    @ObservedObject var viewModel = AllPlayersViewModel(statsService: StatsService())
 
-    @ObservedObject private var viewModel = AllPlayersViewModel(statsService: StatsService())
     @Environment(\.presentationMode) private var presentationMode
 
     var body: some View {
@@ -20,18 +20,35 @@ struct AllPlayersView: View {
             VStack {
                 SearchBar(placeholder: "Search",
                           onTextUpdate: { updatedText in
-                    viewModel.filterPlayers(for: updatedText)
+                    viewModel.filter(for: updatedText)
                 })
-                List(viewModel.filteredPlayers, id: \.id) { player in
-                    let playerRow = PlayerRow(player: player)
-                    Text(playerRow.text)
-                        .onTapGesture {
-                            onPlayerSelection?(player)
-                            presentationMode.wrappedValue.dismiss()
+                List {
+                    Section(header: Text("Recent")) {
+                        ForEach(viewModel.recentPlayers, id: \.id) { recentPlayer in
+                            let playerRow = PlayerRow(player: recentPlayer)
+                            Text(playerRow.text)
+                                .onTapGesture {
+                                    onPlayerSelection?(recentPlayer)
+                                    viewModel.save(recentPlayer)
+                                    presentationMode.wrappedValue.dismiss()
+                                }
                         }
+                    }
+
+                    Section(header: Text("All")) {
+                        ForEach(viewModel.allPlayers, id: \.id) { player in
+                            let playerRow = PlayerRow(player: player)
+                            Text(playerRow.text)
+                                .onTapGesture {
+                                    onPlayerSelection?(player)
+                                    viewModel.save(player)
+                                    presentationMode.wrappedValue.dismiss()
+                                }
+                        }
+                    }
                 }
                 .onAppear {
-                    self.viewModel.fetchAllPlayersIfNeeded()
+                    self.viewModel.populatePlayers()
                 }
             }
             .navigationBarTitle("⛹🏽‍♂️ All NBA Players")
@@ -41,6 +58,7 @@ struct AllPlayersView: View {
 
 struct AllPlayersView_Previews: PreviewProvider {
     static var previews: some View {
-        AllPlayersView(onPlayerSelection: nil)
+        let allPlayersViewModel = AllPlayersViewModel(statsService: MockStatsService())
+        AllPlayersView(onPlayerSelection: nil, viewModel: allPlayersViewModel)
     }
 }
