@@ -17,7 +17,7 @@ struct AllPlayersView: View {
 
     var body: some View {
         NavigationView {
-            VStack {
+            VStack(spacing: 0) {
                 SearchBar(placeholder: "Search",
                           onTextUpdate: { updatedText in
                     viewModel.filter(for: updatedText)
@@ -26,20 +26,18 @@ struct AllPlayersView: View {
                     Section(header: Text("Recent")) {
                         ForEach(viewModel.recentPlayers, id: \.id) { recentPlayer in
                             let playerRow = PlayerRow(player: recentPlayer)
-                            Text(playerRow.text)
-                                .onTapGesture {
-                                    savePlayerAndDismiss(recentPlayer)
-                                }
+                            PlayerRowView(playerRow: playerRow) {
+                                savePlayerAndDismiss(recentPlayer)
+                            }
                         }
                     }
 
                     Section(header: Text("All")) {
                         ForEach(viewModel.allPlayers, id: \.id) { player in
                             let playerRow = PlayerRow(player: player)
-                            Text(playerRow.text)
-                                .onTapGesture {
-                                    savePlayerAndDismiss(player)
-                                }
+                            PlayerRowView(playerRow: playerRow) {
+                                savePlayerAndDismiss(player)
+                            }
                         }
                     }
                 }
@@ -83,5 +81,6 @@ struct AllPlayersView_Previews: PreviewProvider {
                                                       playersCache: playersCache)
         AllPlayersView(viewModel: allPlayersViewModel,
                        onPlayerSelection: nil)
+            .environment(\.colorScheme, ColorScheme.dark)
     }
 }

@@ -17,6 +17,8 @@
 		CA425F132566F41100CF944F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA425F122566F41100CF944F /* Assets.xcassets */; };
 		CA425F162566F41100CF944F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA425F152566F41100CF944F /* Preview Assets.xcassets */; };
 		CA425F1F2566F49900CF944F /* StatsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA425F1E2566F49900CF944F /* StatsService.swift */; };
+		CA6D7B0B25783FA8008B1E92 /* PlayerRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6D7B0A25783FA8008B1E92 /* PlayerRowView.swift */; };
+		CAAAF0C0257A88A8003267FC /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAAF0BF257A88A8003267FC /* ColorExtension.swift */; };
 		CABBE30425758C08004514F5 /* AllPlayersViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABBE30325758C08004514F5 /* AllPlayersViewModels.swift */; };
 		CAC16F2E256C58980020B261 /* StatRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC16F2D256C58980020B261 /* StatRow.swift */; };
 		CAC16F31256C5A180020B261 /* VersusPlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC16F30256C5A180020B261 /* VersusPlayerViewModel.swift */; };
@@ -45,6 +47,8 @@
 		CA425F152566F41100CF944F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CA425F172566F41100CF944F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA425F1E2566F49900CF944F /* StatsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsService.swift; sourceTree = "<group>"; };
+		CA6D7B0A25783FA8008B1E92 /* PlayerRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerRowView.swift; sourceTree = "<group>"; };
+		CAAAF0BF257A88A8003267FC /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		CABBE30325758C08004514F5 /* AllPlayersViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllPlayersViewModels.swift; sourceTree = "<group>"; };
 		CAC16F2D256C58980020B261 /* StatRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatRow.swift; sourceTree = "<group>"; };
 		CAC16F30256C5A180020B261 /* VersusPlayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersusPlayerViewModel.swift; sourceTree = "<group>"; };
@@ -137,6 +141,7 @@
 				CA002B012576AC2F00628E2E /* UserDataStore.swift */,
 				CA002B042576E70F00628E2E /* PlayersCache.swift */,
 				CA26131025680DE9008E3695 /* API */,
+				CAAAF0BF257A88A8003267FC /* ColorExtension.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -144,9 +149,11 @@
 		CAE7EB3A256C51CD0088701E /* AllPlayers */ = {
 			isa = PBXGroup;
 			children = (
-				CABBE30325758C08004514F5 /* AllPlayersViewModels.swift */,
 				CAC242C1256EB9FF001CCC80 /* AllPlayersView.swift */,
+				CABBE30325758C08004514F5 /* AllPlayersViewModels.swift */,
 				CAE1AA22256F0CA9008BF9AF /* SearchBar.swift */,
+				CAE1AA1F256F0A4F008BF9AF /* PlayerRow.swift */,
+				CA6D7B0A25783FA8008B1E92 /* PlayerRowView.swift */,
 			);
 			path = AllPlayers;
 			sourceTree = "<group>";
@@ -154,8 +161,8 @@
 		CAF075A825782D67009800E5 /* Versus */ = {
 			isa = PBXGroup;
 			children = (
-				CAE7EB37256C50510088701E /* VersusViewModel.swift */,
 				CA425F102566F40E00CF944F /* VersusView.swift */,
+				CAE7EB37256C50510088701E /* VersusViewModel.swift */,
 			);
 			path = Versus;
 			sourceTree = "<group>";
@@ -163,10 +170,9 @@
 		CAF075AA25782D87009800E5 /* Player */ = {
 			isa = PBXGroup;
 			children = (
-				CAC16F30256C5A180020B261 /* VersusPlayerViewModel.swift */,
 				CAC242CE256EC7D1001CCC80 /* VersusPlayerView.swift */,
+				CAC16F30256C5A180020B261 /* VersusPlayerViewModel.swift */,
 				CAF0F044256EFEF90083D7E3 /* InitialsView.swift */,
-				CAE1AA1F256F0A4F008BF9AF /* PlayerRow.swift */,
 				CAC16F2D256C58980020B261 /* StatRow.swift */,
 			);
 			path = Player;
@@ -253,6 +259,8 @@
 			files = (
 				CA002B052576E70F00628E2E /* PlayersCache.swift in Sources */,
 				CA26130E25680D9A008E3695 /* PlayerIndexResponse.swift in Sources */,
+				CAAAF0C0257A88A8003267FC /* ColorExtension.swift in Sources */,
+				CA6D7B0B25783FA8008B1E92 /* PlayerRowView.swift in Sources */,
 				CAF0F045256EFEF90083D7E3 /* InitialsView.swift in Sources */,
 				CAE7EB34256C4FB90088701E /* Stat.swift in Sources */,
 				CAE7EB38256C50510088701E /* VersusViewModel.swift in Sources */,

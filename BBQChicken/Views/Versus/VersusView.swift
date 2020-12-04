@@ -58,6 +58,7 @@ struct VersusView: View {
                 }
                 .padding(edgeInsets)
             }
+            .listStyle(InsetListStyle())
             .navigationBarTitle("🍗 BBQ Chicken")
         }
     }
@@ -76,11 +77,16 @@ struct VersusView_Previews: PreviewProvider {
         let fullViewModel = VersusViewModel(playerOne: player,
                                             playerTwo: player)
         Group {
-            VersusView(viewModel: emptyViewModel)
-                .previewDevice("iPhone X")
-            VersusView(viewModel: fullViewModel)
-                .previewDevice("iPhone SE (2nd generation)")
-                .previewDisplayName("iPhone SE")
+            ForEach(ColorScheme.allCases, id: \.self) { colorScheme in
+                let deviceName = PreviewDevice(rawValue: "iPhone 12 Pro")
+                
+                VersusView(viewModel: fullViewModel)
+                    .previewDevice(deviceName)
+                    .environment(\.colorScheme, colorScheme)
+                VersusView(viewModel: emptyViewModel)
+                    .previewDevice(deviceName)
+                    .environment(\.colorScheme, colorScheme)
+            }
         }
     }
 }
