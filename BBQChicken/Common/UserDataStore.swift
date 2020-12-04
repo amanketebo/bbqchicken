@@ -39,11 +39,16 @@ class UserDataStore {
     // MARK: - Saving
 
     func save(_ player: Player) {
-        var savedPlayers = Array(self.recentlySelectedPlayers.suffix(recentSelectedPlayersLimit - 1))
-        savedPlayers.append(player)
+        let selectedPlayers = recentlySelectedPlayers
+        guard !selectedPlayers.contains(player) else {
+            return
+        }
+
+        var lastPlayersSaved = Array(selectedPlayers.suffix(recentSelectedPlayersLimit - 1))
+        lastPlayersSaved.append(player)
 
         do {
-            let data = try JSONEncoder().encode(savedPlayers)
+            let data = try JSONEncoder().encode(lastPlayersSaved)
             userDefaults.setValue(data, forKey: Keys.recentlySelectedPlayers)
         } catch {
             print("Failed to save selected player")
