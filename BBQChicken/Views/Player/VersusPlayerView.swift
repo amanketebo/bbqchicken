@@ -21,7 +21,7 @@ struct VersusPlayerView: View {
                         .frame(width: 75, height: 75, alignment: .center)
                     Text(viewModel.fullNameText)
                         .font(.title)
-                        .foregroundColor(.black)
+                        .foregroundColor(.primary)
                     Spacer()
                 }
 
@@ -30,7 +30,7 @@ struct VersusPlayerView: View {
                     .frame(width: 150, height: 150, alignment: .center)
                 Text(viewModel.fullNameText)
                     .font(.title)
-                    .foregroundColor(.black)
+                    .foregroundColor(.primary)
             }
 
             if !viewModel.statRows.isEmpty {
@@ -38,9 +38,11 @@ struct VersusPlayerView: View {
                     HStack {
                         Text(viewModel.title)
                             .fontWeight(.medium)
+                            .foregroundColor(.primary)
                         Spacer()
                         Text(viewModel.detail)
                             .fontWeight(.bold)
+                            .foregroundColor(.primary)
                     }
                 }
             }
@@ -56,8 +58,11 @@ struct VersusPlayerView_Previews: PreviewProvider {
                             pointsPerGame: 25,
                             reboundsPerGame: 5,
                             assistsPerGame: 5)
+        let colorScheme = ColorScheme.dark
         let viewModel = VersusPlayerViewModel(player: player)
         VersusPlayerView(viewModel: viewModel)
+            .background(Color.background)
             .previewLayout(.sizeThatFits)
+            .environment(\.colorScheme, colorScheme)
     }
 }
