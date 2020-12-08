@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import WidgetKit
 
 struct StatRow: Identifiable {
     // MARK: - Properties
@@ -19,22 +20,46 @@ struct StatRow: Identifiable {
 
     // MARK: - Init
 
-    init(stat: Stat) {
-        let statAbbreviation = StatRow.abbreviation(for: stat)
+    init(stat: Stat, widgetFamily: WidgetFamily? = nil) {
+        title = StatRow.title(for: stat, widgetFamily: widgetFamily)
+        detail = StatRow.detail(for: stat)
+    }
 
+    static func title(for stat: Stat, widgetFamily: WidgetFamily?) -> String {
+        switch (stat, widgetFamily) {
+        case (_, .systemSmall?):
+            return StatRow.emoji(for: stat)
+
+        case (.pointsAverage, _):
+            return "\(StatRow.emoji(for: stat)) Points"
+
+        case (.reboundsAverage, _):
+            return "\(StatRow.emoji(for: stat)) Rebounds"
+
+        case (.assistsAverage, _):
+            return "\(StatRow.emoji(for: stat)) Assists"
+        }
+    }
+
+    static func detail(for stat: Stat) -> String {
         switch stat {
-        case .pointsAverage(let pointsPerGame):
-            let pointsPerGameString = String(pointsPerGame)
-            title = "🔢 Points"
-            detail = "\(pointsPerGameString) \(statAbbreviation)"
+        case .pointsAverage(let statPerGame),
+             .reboundsAverage(let statPerGame),
+             .assistsAverage(let statPerGame):
+            return "\(statPerGame) \(StatRow.abbreviation(for: stat))"
+        }
+    }
 
-        case .reboundsAverage(let reboundsPerGame):
-            title = "🏀 Rebounds"
-            detail = "\(reboundsPerGame) \(statAbbreviation)"
+    static func emoji(for stat: Stat) -> String {
+        switch stat {
+        case .pointsAverage:
+            return "🔢"
 
-        case .assistsAverage(let assistsPerGame):
-            title = "🛂 Assists"
-            detail = "\(assistsPerGame) \(statAbbreviation)"
+        case .reboundsAverage:
+            return "🏀"
+
+        case .assistsAverage:
+            return "🛂"
         }
     }
 
