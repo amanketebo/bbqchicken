@@ -20,9 +20,11 @@ struct StatRow: Identifiable {
 
     // MARK: - Init
 
-    init(stat: Stat, widgetFamily: WidgetFamily? = nil) {
+    init(stat: Stat,
+         widgetFamily: WidgetFamily? = nil,
+         isEmptyWidget: Bool = false) {
         title = StatRow.title(for: stat, widgetFamily: widgetFamily)
-        detail = StatRow.detail(for: stat)
+        detail = StatRow.detail(for: stat, isEmptyWidget: isEmptyWidget)
     }
 
     static func title(for stat: Stat, widgetFamily: WidgetFamily?) -> String {
@@ -41,12 +43,16 @@ struct StatRow: Identifiable {
         }
     }
 
-    static func detail(for stat: Stat) -> String {
+    static func detail(for stat: Stat, isEmptyWidget: Bool) -> String {
         switch stat {
         case .pointsAverage(let statPerGame),
              .reboundsAverage(let statPerGame),
              .assistsAverage(let statPerGame):
-            return "\(statPerGame) \(StatRow.abbreviation(for: stat))"
+            if isEmptyWidget {
+                return "--"
+            } else {
+                return "\(statPerGame) \(StatRow.abbreviation(for: stat))"
+            }
         }
     }
 

@@ -33,6 +33,8 @@
 		CA7B83AD257FFD8A00126CEE /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7B83A0257FFA7200126CEE /* Provider.swift */; };
 		CA7B83B3257FFEC000126CEE /* SimpleEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7B83B2257FFEC000126CEE /* SimpleEntry.swift */; };
 		CA7B83B9258003D300126CEE /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7B83B8258003D300126CEE /* ColorExtension.swift */; };
+		CA7B83C125800D9F00126CEE /* UserDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA002B012576AC2F00628E2E /* UserDataStore.swift */; };
+		CA7B83C52580299F00126CEE /* WidgetPlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7B83C42580299F00126CEE /* WidgetPlayerViewModel.swift */; };
 		CAAAF0C0257A88A8003267FC /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAAF0BF257A88A8003267FC /* ColorExtension.swift */; };
 		CABBE30425758C08004514F5 /* AllPlayersViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABBE30325758C08004514F5 /* AllPlayersViewModels.swift */; };
 		CAC16F2E256C58980020B261 /* StatRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC16F2D256C58980020B261 /* StatRow.swift */; };
@@ -97,6 +99,9 @@
 		CA7B83A6257FFAB700126CEE /* MockPlayers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPlayers.swift; sourceTree = "<group>"; };
 		CA7B83B2257FFEC000126CEE /* SimpleEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleEntry.swift; sourceTree = "<group>"; };
 		CA7B83B8258003D300126CEE /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		CA7B83C42580299F00126CEE /* WidgetPlayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetPlayerViewModel.swift; sourceTree = "<group>"; };
+		CA7B83CC25803B4800126CEE /* BBQChicken.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BBQChicken.entitlements; sourceTree = "<group>"; };
+		CA7B83CF25803B7900126CEE /* BBQChickenWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BBQChickenWidgetExtension.entitlements; sourceTree = "<group>"; };
 		CAAAF0BF257A88A8003267FC /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		CABBE30325758C08004514F5 /* AllPlayersViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllPlayersViewModels.swift; sourceTree = "<group>"; };
 		CAC16F2D256C58980020B261 /* StatRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatRow.swift; sourceTree = "<group>"; };
@@ -149,6 +154,7 @@
 				CA7B83A0257FFA7200126CEE /* Provider.swift */,
 				CA7B83B2257FFEC000126CEE /* SimpleEntry.swift */,
 				CA7B83B8258003D300126CEE /* ColorExtension.swift */,
+				CA7B83C42580299F00126CEE /* WidgetPlayerViewModel.swift */,
 				CA0ADFE3257E890200EA0331 /* Assets.xcassets */,
 				CA0ADFE5257E890200EA0331 /* Info.plist */,
 			);
@@ -170,6 +176,7 @@
 		CA425F022566F40E00CF944F = {
 			isa = PBXGroup;
 			children = (
+				CA7B83CF25803B7900126CEE /* BBQChickenWidgetExtension.entitlements */,
 				CA425F0D2566F40E00CF944F /* BBQChicken */,
 				CA0ADFDF257E890000EA0331 /* BBQChickenWidget */,
 				CA0ADFDA257E890000EA0331 /* Frameworks */,
@@ -189,6 +196,7 @@
 		CA425F0D2566F40E00CF944F /* BBQChicken */ = {
 			isa = PBXGroup;
 			children = (
+				CA7B83CC25803B4800126CEE /* BBQChicken.entitlements */,
 				CA425F0E2566F40E00CF944F /* BBQChickenApp.swift */,
 				CAE7EB31256C4F940088701E /* Common */,
 				CAF075AE25782DED009800E5 /* Views */,
@@ -373,7 +381,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA7B83B3257FFEC000126CEE /* SimpleEntry.swift in Sources */,
+				CA7B83C125800D9F00126CEE /* UserDataStore.swift in Sources */,
 				CA0ADFFA257EAC6600EA0331 /* PlayerIndexResponse.swift in Sources */,
+				CA7B83C52580299F00126CEE /* WidgetPlayerViewModel.swift in Sources */,
 				CA7B83A8257FFAB700126CEE /* MockPlayers.swift in Sources */,
 				CA0ADFF4257EAB1C00EA0331 /* Stat.swift in Sources */,
 				CA0ADFF1257EAB1600EA0331 /* Player.swift in Sources */,
@@ -432,6 +442,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = BBQChickenWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6Z5EK2Z6N5;
 				INFOPLIST_FILE = BBQChickenWidget/Info.plist;
@@ -453,6 +464,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = BBQChickenWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6Z5EK2Z6N5;
 				INFOPLIST_FILE = BBQChickenWidget/Info.plist;
@@ -591,6 +603,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = BBQChicken/BBQChicken.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"BBQChicken/Preview Content\"";
 				DEVELOPMENT_TEAM = 6Z5EK2Z6N5;
@@ -614,6 +627,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = BBQChicken/BBQChicken.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"BBQChicken/Preview Content\"";
 				DEVELOPMENT_TEAM = 6Z5EK2Z6N5;
