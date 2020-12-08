@@ -14,7 +14,7 @@ class AllPlayersViewModel: ObservableObject {
     @Published var recentPlayers: [Player] = []
     @Published var allPlayers: [Player] = []
 
-    var userDataStore = UserDataStore(userDefaults: .standard)
+    var userDataStore = UserDataStore()
 
     private var statsService: StatsServiceProtocol
     private var playersCache: PlayersCache

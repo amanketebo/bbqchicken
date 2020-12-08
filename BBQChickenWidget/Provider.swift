@@ -9,22 +9,21 @@ import Foundation
 import WidgetKit
 
 struct Provider: TimelineProvider {
-    // Replace mock player with one from app group or userDefaults
-    let player = MockPlayers.kobeBryant
+    let userDataStore = UserDataStore()
 
     // MARK: - TimelineProvider
 
     func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), player: player)
+        SimpleEntry(date: Date(), player: MockPlayers.calvinCambridge)
     }
 
     func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        let entry = SimpleEntry(date: Date(), player: player)
+        let entry = SimpleEntry(date: Date(), player: MockPlayers.calvinCambridge)
         completion(entry)
     }
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<SimpleEntry>) -> ()) {
-        completion(Timeline(entries: [SimpleEntry(date: Date(), player: player)],
+        completion(Timeline(entries: [SimpleEntry(date: Date(), player: userDataStore.lastSelectedPlayer)],
                             policy: .never))
     }
 }

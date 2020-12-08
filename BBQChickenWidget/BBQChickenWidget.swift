@@ -13,12 +13,12 @@ struct BBQChickenWidgetEntryView : View {
     @Environment(\.widgetFamily) private var widgetFamily
 
     var body: some View {
-        let viewModel = VersusPlayerViewModel(player: entry.player,
+        let viewModel = WidgetPlayerViewModel(player: entry.player,
                                               widgetFamily: widgetFamily)
 
         VStack(spacing: 10) {
             HStack(alignment: .firstTextBaseline) {
-                Text(entry.player.fullName)
+                Text(viewModel.fullNameText)
                     .font(.title)
                     .fontWeight(.medium)
                     .foregroundColor(.white)
@@ -33,7 +33,7 @@ struct BBQChickenWidgetEntryView : View {
                              .systemMedium:
                             Text(viewModel.title)
                                 .font(.headline)
-                                .fontWeight(.regular)
+                                .fontWeight(.light)
                                 .foregroundColor(.white)
                             Spacer()
                             Text(viewModel.detail)
@@ -86,11 +86,18 @@ struct BBQChickenWidget: Widget {
 struct BBQChickenWidget_Previews: PreviewProvider {
     static var previews: some View {
         let entry = SimpleEntry(date: Date(), player: MockPlayers.kobeBryant)
+        let missingPlayerEntry = SimpleEntry(date: Date(), player: nil)
 
         BBQChickenWidgetEntryView(entry: entry)
             .previewContext(WidgetPreviewContext(family: .systemSmall))
 
         BBQChickenWidgetEntryView(entry: entry)
+            .previewContext(WidgetPreviewContext(family: .systemMedium))
+
+        BBQChickenWidgetEntryView(entry: missingPlayerEntry)
+            .previewContext(WidgetPreviewContext(family: .systemSmall))
+
+        BBQChickenWidgetEntryView(entry: missingPlayerEntry)
             .previewContext(WidgetPreviewContext(family: .systemMedium))
     }
 }

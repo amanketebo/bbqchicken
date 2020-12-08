@@ -28,4 +28,11 @@ enum MockPlayers {
                                     pointsPerGame: 25.2,
                                     reboundsPerGame: 5.3,
                                     assistsPerGame: 6.3)
+
+    static let calvinCambridge = Player(id: 4,
+                                        firstName: "Calvin",
+                                        lastName: "Cambridge",
+                                        pointsPerGame: 38.5,
+                                        reboundsPerGame: 2.3,
+                                        assistsPerGame: 12)
 }
