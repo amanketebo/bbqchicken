@@ -8,28 +8,6 @@
 import Foundation
 import WidgetKit
 
-enum PlayerViewContext {
-    case app
-    case smallWidget
-    case mediumWidget
-
-    init(widgetFamily: WidgetFamily) {
-        switch widgetFamily {
-        case .systemLarge:
-            self = .app
-
-        case .systemMedium:
-            self = .mediumWidget
-
-        case .systemSmall:
-            self = .smallWidget
-
-        @unknown default:
-            self = .app
-        }
-    }
-}
-
 struct VersusPlayerViewModel {
     // MARK: - Type
 
