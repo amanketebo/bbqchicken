@@ -18,7 +18,8 @@ struct Provider: TimelineProvider {
     }
 
     func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        let entry = SimpleEntry(date: Date(), player: MockPlayers.calvinCambridge)
+        let entry = SimpleEntry(date: Date(),
+                                player: userDataStore.lastSelectedPlayer ?? MockPlayers.calvinCambridge)
         completion(entry)
     }
 
