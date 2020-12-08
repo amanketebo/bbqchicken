@@ -9,6 +9,16 @@
 /* Begin PBXBuildFile section */
 		CA002B022576AC2F00628E2E /* UserDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA002B012576AC2F00628E2E /* UserDataStore.swift */; };
 		CA002B052576E70F00628E2E /* PlayersCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA002B042576E70F00628E2E /* PlayersCache.swift */; };
+		CA0ADFDC257E890000EA0331 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA0ADFDB257E890000EA0331 /* WidgetKit.framework */; };
+		CA0ADFDE257E890000EA0331 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA0ADFDD257E890000EA0331 /* SwiftUI.framework */; };
+		CA0ADFE1257E890000EA0331 /* BBQChickenWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0ADFE0257E890000EA0331 /* BBQChickenWidget.swift */; };
+		CA0ADFE4257E890200EA0331 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA0ADFE3257E890200EA0331 /* Assets.xcassets */; };
+		CA0ADFEA257E890200EA0331 /* BBQChickenWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CA0ADFD9257E890000EA0331 /* BBQChickenWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		CA0ADFF1257EAB1600EA0331 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE7EB2E256C4F610088701E /* Player.swift */; };
+		CA0ADFF4257EAB1C00EA0331 /* Stat.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE7EB33256C4FB90088701E /* Stat.swift */; };
+		CA0ADFF7257EABE400EA0331 /* VersusPlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC16F30256C5A180020B261 /* VersusPlayerViewModel.swift */; };
+		CA0ADFFA257EAC6600EA0331 /* PlayerIndexResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA26130D25680D9A008E3695 /* PlayerIndexResponse.swift */; };
+		CA0ADFFD257EACFD00EA0331 /* StatRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC16F2D256C58980020B261 /* StatRow.swift */; };
 		CA26130725680D53008E3695 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA26130625680D53008E3695 /* Endpoint.swift */; };
 		CA26130A25680D71008E3695 /* RequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA26130925680D71008E3695 /* RequestFactory.swift */; };
 		CA26130E25680D9A008E3695 /* PlayerIndexResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA26130D25680D9A008E3695 /* PlayerIndexResponse.swift */; };
@@ -18,6 +28,11 @@
 		CA425F162566F41100CF944F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA425F152566F41100CF944F /* Preview Assets.xcassets */; };
 		CA425F1F2566F49900CF944F /* StatsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA425F1E2566F49900CF944F /* StatsService.swift */; };
 		CA6D7B0B25783FA8008B1E92 /* PlayerRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6D7B0A25783FA8008B1E92 /* PlayerRowView.swift */; };
+		CA7B83A7257FFAB700126CEE /* MockPlayers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7B83A6257FFAB700126CEE /* MockPlayers.swift */; };
+		CA7B83A8257FFAB700126CEE /* MockPlayers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7B83A6257FFAB700126CEE /* MockPlayers.swift */; };
+		CA7B83AD257FFD8A00126CEE /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7B83A0257FFA7200126CEE /* Provider.swift */; };
+		CA7B83B3257FFEC000126CEE /* SimpleEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7B83B2257FFEC000126CEE /* SimpleEntry.swift */; };
+		CA7B83B9258003D300126CEE /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7B83B8258003D300126CEE /* ColorExtension.swift */; };
 		CAAAF0C0257A88A8003267FC /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAAF0BF257A88A8003267FC /* ColorExtension.swift */; };
 		CABBE30425758C08004514F5 /* AllPlayersViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABBE30325758C08004514F5 /* AllPlayersViewModels.swift */; };
 		CAC16F2E256C58980020B261 /* StatRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC16F2D256C58980020B261 /* StatRow.swift */; };
@@ -34,9 +49,39 @@
 		CAF0F045256EFEF90083D7E3 /* InitialsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF0F044256EFEF90083D7E3 /* InitialsView.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		CA0ADFE8257E890200EA0331 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CA425F032566F40E00CF944F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CA0ADFD8257E890000EA0331;
+			remoteInfo = BBQChickenWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		CA0ADFEB257E890200EA0331 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				CA0ADFEA257E890200EA0331 /* BBQChickenWidgetExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		CA002B012576AC2F00628E2E /* UserDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataStore.swift; sourceTree = "<group>"; };
 		CA002B042576E70F00628E2E /* PlayersCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayersCache.swift; sourceTree = "<group>"; };
+		CA0ADFD9257E890000EA0331 /* BBQChickenWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BBQChickenWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA0ADFDB257E890000EA0331 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		CA0ADFDD257E890000EA0331 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		CA0ADFE0257E890000EA0331 /* BBQChickenWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBQChickenWidget.swift; sourceTree = "<group>"; };
+		CA0ADFE3257E890200EA0331 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CA0ADFE5257E890200EA0331 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA26130625680D53008E3695 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		CA26130925680D71008E3695 /* RequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestFactory.swift; sourceTree = "<group>"; };
 		CA26130D25680D9A008E3695 /* PlayerIndexResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerIndexResponse.swift; sourceTree = "<group>"; };
@@ -48,6 +93,10 @@
 		CA425F172566F41100CF944F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA425F1E2566F49900CF944F /* StatsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsService.swift; sourceTree = "<group>"; };
 		CA6D7B0A25783FA8008B1E92 /* PlayerRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerRowView.swift; sourceTree = "<group>"; };
+		CA7B83A0257FFA7200126CEE /* Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
+		CA7B83A6257FFAB700126CEE /* MockPlayers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPlayers.swift; sourceTree = "<group>"; };
+		CA7B83B2257FFEC000126CEE /* SimpleEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleEntry.swift; sourceTree = "<group>"; };
+		CA7B83B8258003D300126CEE /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		CAAAF0BF257A88A8003267FC /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		CABBE30325758C08004514F5 /* AllPlayersViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllPlayersViewModels.swift; sourceTree = "<group>"; };
 		CAC16F2D256C58980020B261 /* StatRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatRow.swift; sourceTree = "<group>"; };
@@ -65,6 +114,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		CA0ADFD6257E890000EA0331 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CA0ADFDE257E890000EA0331 /* SwiftUI.framework in Frameworks */,
+				CA0ADFDC257E890000EA0331 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CA425F082566F40E00CF944F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -75,6 +133,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CA0ADFDA257E890000EA0331 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CA0ADFDB257E890000EA0331 /* WidgetKit.framework */,
+				CA0ADFDD257E890000EA0331 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CA0ADFDF257E890000EA0331 /* BBQChickenWidget */ = {
+			isa = PBXGroup;
+			children = (
+				CA0ADFE0257E890000EA0331 /* BBQChickenWidget.swift */,
+				CA7B83A0257FFA7200126CEE /* Provider.swift */,
+				CA7B83B2257FFEC000126CEE /* SimpleEntry.swift */,
+				CA7B83B8258003D300126CEE /* ColorExtension.swift */,
+				CA0ADFE3257E890200EA0331 /* Assets.xcassets */,
+				CA0ADFE5257E890200EA0331 /* Info.plist */,
+			);
+			path = BBQChickenWidget;
+			sourceTree = "<group>";
+		};
 		CA26131025680DE9008E3695 /* API */ = {
 			isa = PBXGroup;
 			children = (
@@ -91,6 +171,8 @@
 			isa = PBXGroup;
 			children = (
 				CA425F0D2566F40E00CF944F /* BBQChicken */,
+				CA0ADFDF257E890000EA0331 /* BBQChickenWidget */,
+				CA0ADFDA257E890000EA0331 /* Frameworks */,
 				CA425F0C2566F40E00CF944F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -99,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				CA425F0B2566F40E00CF944F /* BBQChicken.app */,
+				CA0ADFD9257E890000EA0331 /* BBQChickenWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -142,6 +225,7 @@
 				CA002B042576E70F00628E2E /* PlayersCache.swift */,
 				CA26131025680DE9008E3695 /* API */,
 				CAAAF0BF257A88A8003267FC /* ColorExtension.swift */,
+				CA7B83A6257FFAB700126CEE /* MockPlayers.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -191,6 +275,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		CA0ADFD8257E890000EA0331 /* BBQChickenWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CA0ADFEE257E890200EA0331 /* Build configuration list for PBXNativeTarget "BBQChickenWidgetExtension" */;
+			buildPhases = (
+				CA0ADFD5257E890000EA0331 /* Sources */,
+				CA0ADFD6257E890000EA0331 /* Frameworks */,
+				CA0ADFD7257E890000EA0331 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BBQChickenWidgetExtension;
+			productName = BBQChickenWidgetExtension;
+			productReference = CA0ADFD9257E890000EA0331 /* BBQChickenWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		CA425F0A2566F40E00CF944F /* BBQChicken */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = CA425F1A2566F41100CF944F /* Build configuration list for PBXNativeTarget "BBQChicken" */;
@@ -198,10 +299,12 @@
 				CA425F072566F40E00CF944F /* Sources */,
 				CA425F082566F40E00CF944F /* Frameworks */,
 				CA425F092566F40E00CF944F /* Resources */,
+				CA0ADFEB257E890200EA0331 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				CA0ADFE9257E890200EA0331 /* PBXTargetDependency */,
 			);
 			name = BBQChicken;
 			productName = BBQChicken;
@@ -217,6 +320,9 @@
 				LastSwiftUpdateCheck = 1220;
 				LastUpgradeCheck = 1220;
 				TargetAttributes = {
+					CA0ADFD8257E890000EA0331 = {
+						CreatedOnToolsVersion = 12.2;
+					};
 					CA425F0A2566F40E00CF944F = {
 						CreatedOnToolsVersion = 12.2;
 					};
@@ -236,11 +342,20 @@
 			projectRoot = "";
 			targets = (
 				CA425F0A2566F40E00CF944F /* BBQChicken */,
+				CA0ADFD8257E890000EA0331 /* BBQChickenWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		CA0ADFD7257E890000EA0331 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CA0ADFE4257E890200EA0331 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CA425F092566F40E00CF944F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -253,10 +368,28 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		CA0ADFD5257E890000EA0331 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CA7B83B3257FFEC000126CEE /* SimpleEntry.swift in Sources */,
+				CA0ADFFA257EAC6600EA0331 /* PlayerIndexResponse.swift in Sources */,
+				CA7B83A8257FFAB700126CEE /* MockPlayers.swift in Sources */,
+				CA0ADFF4257EAB1C00EA0331 /* Stat.swift in Sources */,
+				CA0ADFF1257EAB1600EA0331 /* Player.swift in Sources */,
+				CA7B83AD257FFD8A00126CEE /* Provider.swift in Sources */,
+				CA0ADFF7257EABE400EA0331 /* VersusPlayerViewModel.swift in Sources */,
+				CA0ADFE1257E890000EA0331 /* BBQChickenWidget.swift in Sources */,
+				CA0ADFFD257EACFD00EA0331 /* StatRow.swift in Sources */,
+				CA7B83B9258003D300126CEE /* ColorExtension.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CA425F072566F40E00CF944F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA7B83A7257FFAB700126CEE /* MockPlayers.swift in Sources */,
 				CA002B052576E70F00628E2E /* PlayersCache.swift in Sources */,
 				CA26130E25680D9A008E3695 /* PlayerIndexResponse.swift in Sources */,
 				CAAAF0C0257A88A8003267FC /* ColorExtension.swift in Sources */,
@@ -285,7 +418,57 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		CA0ADFE9257E890200EA0331 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CA0ADFD8257E890000EA0331 /* BBQChickenWidgetExtension */;
+			targetProxy = CA0ADFE8257E890200EA0331 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		CA0ADFEC257E890200EA0331 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6Z5EK2Z6N5;
+				INFOPLIST_FILE = BBQChickenWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.amanketebo.BBQChicken.BBQChickenWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CA0ADFED257E890200EA0331 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6Z5EK2Z6N5;
+				INFOPLIST_FILE = BBQChickenWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.amanketebo.BBQChicken.BBQChickenWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		CA425F182566F41100CF944F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -405,6 +588,7 @@
 		CA425F1B2566F41100CF944F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -427,6 +611,7 @@
 		CA425F1C2566F41100CF944F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -449,6 +634,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		CA0ADFEE257E890200EA0331 /* Build configuration list for PBXNativeTarget "BBQChickenWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CA0ADFEC257E890200EA0331 /* Debug */,
+				CA0ADFED257E890200EA0331 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		CA425F062566F40E00CF944F /* Build configuration list for PBXProject "BBQChicken" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

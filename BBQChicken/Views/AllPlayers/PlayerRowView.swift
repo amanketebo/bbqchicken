@@ -26,12 +26,7 @@ struct PlayerRowView: View {
 
 struct PlayerRowView_Previews: PreviewProvider {
     static var previews: some View {
-        let player = Player(id: 3,
-                            firstName: "James",
-                            lastName: "Harden",
-                            pointsPerGame: 28,
-                            reboundsPerGame: 1,
-                            assistsPerGame: 0)
+        let player = MockPlayers.jamesHarden
 
         Group {
             ForEach(ColorScheme.allCases, id: \.self) { colorScheme in

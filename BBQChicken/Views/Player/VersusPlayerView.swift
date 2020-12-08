@@ -52,14 +52,9 @@ struct VersusPlayerView: View {
 
 struct VersusPlayerView_Previews: PreviewProvider {
     static var previews: some View {
-        let player = Player(id: 1,
-                            firstName: "Kobe",
-                            lastName: "Bryant",
-                            pointsPerGame: 25,
-                            reboundsPerGame: 5,
-                            assistsPerGame: 5)
         let colorScheme = ColorScheme.dark
-        let viewModel = VersusPlayerViewModel(player: player)
+        let viewModel = VersusPlayerViewModel(player: MockPlayers.kobeBryant)
+        
         VersusPlayerView(viewModel: viewModel)
             .background(Color.background)
             .previewLayout(.sizeThatFits)

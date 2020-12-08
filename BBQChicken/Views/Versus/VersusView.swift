@@ -66,16 +66,10 @@ struct VersusView: View {
 
 struct VersusView_Previews: PreviewProvider {
     static var previews: some View {
-        let player = Player(id: 1,
-                            firstName: "Kobe",
-                            lastName: "Bryant",
-                            pointsPerGame: 25,
-                            reboundsPerGame: 5,
-                            assistsPerGame: 5)
         let emptyViewModel = VersusViewModel(playerOne: nil,
                                              playerTwo: nil)
-        let fullViewModel = VersusViewModel(playerOne: player,
-                                            playerTwo: player)
+        let fullViewModel = VersusViewModel(playerOne: MockPlayers.kobeBryant,
+                                            playerTwo: MockPlayers.dwayneWade)
         Group {
             ForEach(ColorScheme.allCases, id: \.self) { colorScheme in
                 let deviceName = PreviewDevice(rawValue: "iPhone 12 Pro")

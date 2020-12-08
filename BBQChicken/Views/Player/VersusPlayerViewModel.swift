@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import WidgetKit
 
 struct VersusPlayerViewModel {
     // MARK: - Type
@@ -24,7 +25,7 @@ struct VersusPlayerViewModel {
     
     // MARK: - Init
 
-    init(player: Player?) {
+    init(player: Player?, widgetFamily: WidgetFamily? = nil) {
         let firstInitial = player?.firstName?.first.flatMap { String($0) } ?? ""
         let lastInitial = player?.lastName?.first.flatMap { String($0) } ?? ""
         initialsText = firstInitial.capitalized + lastInitial.capitalized
@@ -35,7 +36,7 @@ struct VersusPlayerViewModel {
         player?.pointsPerGame.flatMap { availableStats.append(.pointsAverage($0)) }
         player?.reboundsPerGame.flatMap { availableStats.append(.reboundsAverage($0)) }
         player?.assistsPerGame.flatMap { availableStats.append(.assistsAverage($0)) }
-        statRows = availableStats.map { StatRow(stat: $0) }
+        statRows = availableStats.map { StatRow(stat: $0, widgetFamily: widgetFamily) }
 
         layout = statRows.isEmpty ? .expanded : .compact
     }
