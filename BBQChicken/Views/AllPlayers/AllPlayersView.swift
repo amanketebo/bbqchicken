@@ -59,27 +59,12 @@ struct AllPlayersView: View {
 
 struct AllPlayersView_Previews: PreviewProvider {
     static var previews: some View {
-        let playersCache = PlayersCache(allPlayers: [Player(id: 1,
-                                                            firstName: "Kobe",
-                                                            lastName: "Bryant",
-                                                            pointsPerGame: 25,
-                                                            reboundsPerGame: 5,
-                                                            assistsPerGame: 5),
-                                                     Player(id: 2,
-                                                            firstName: "Dwayne",
-                                                            lastName: "Wade",
-                                                            pointsPerGame: 20,
-                                                            reboundsPerGame: 5,
-                                                            assistsPerGame: 4),
-                                                     Player(id: 3,
-                                                            firstName: "James",
-                                                            lastName: "Harden",
-                                                            pointsPerGame: 28,
-                                                            reboundsPerGame: 1,
-                                                            assistsPerGame: 0)])
-        let allPlayersViewModel = AllPlayersViewModel(statsService: MockStatsService(),
-                                                      playersCache: playersCache)
-        AllPlayersView(viewModel: allPlayersViewModel,
+        let playersCache = PlayersCache(allPlayers: [MockPlayers.kobeBryant,
+                                                     MockPlayers.dwayneWade,
+                                                     MockPlayers.jamesHarden])
+        let viewModel = AllPlayersViewModel(statsService: MockStatsService(),
+                                            playersCache: playersCache)
+        AllPlayersView(viewModel: viewModel,
                        onPlayerSelection: nil)
             .environment(\.colorScheme, ColorScheme.dark)
     }
