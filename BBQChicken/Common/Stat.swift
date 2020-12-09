@@ -8,7 +8,7 @@
 import Foundation
 
 enum Stat {
-    case pointsAverage(Float)
-    case reboundsAverage(Float)
-    case assistsAverage(Float)
+    case pointsAverage(Float?)
+    case reboundsAverage(Float?)
+    case assistsAverage(Float?)
 }

@@ -50,8 +50,10 @@ struct StatRow: Identifiable {
              .assistsAverage(let statPerGame):
             if isEmptyWidget {
                 return "--"
-            } else {
+            } else if let statPerGame = statPerGame {
                 return "\(statPerGame) \(StatRow.abbreviation(for: stat))"
+            } else {
+                return "N/A"
             }
         }
     }

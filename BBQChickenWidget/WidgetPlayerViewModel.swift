@@ -16,10 +16,9 @@ struct WidgetPlayerViewModel {
          widgetFamily: WidgetFamily) {
         fullNameText = player?.fullName ?? "--"
 
-        var availableStats: [Stat] = []
-        availableStats.append(.pointsAverage(player?.pointsPerGame ?? -1))
-        availableStats.append(.reboundsAverage(player?.reboundsPerGame ?? -1))
-        availableStats.append(.assistsAverage(player?.assistsPerGame ?? -1))
+        let availableStats: [Stat] = [.pointsAverage(player?.pointsPerGame),
+                                      .reboundsAverage(player?.reboundsPerGame),
+                                      .assistsAverage(player?.assistsPerGame)]
         statRows = availableStats.map { StatRow(stat: $0, widgetFamily: widgetFamily, isEmptyWidget: player == nil) }
     }
 }
