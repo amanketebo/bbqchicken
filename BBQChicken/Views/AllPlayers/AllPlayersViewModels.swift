@@ -22,7 +22,7 @@ class AllPlayersViewModel: ObservableObject {
 
     // MARK: - Init
 
-    init(statsService: StatsServiceProtocol,
+    init(statsService: StatsServiceProtocol = StatsService(),
          playersCache: PlayersCache) {
         self.statsService = statsService
         self.playersCache = playersCache

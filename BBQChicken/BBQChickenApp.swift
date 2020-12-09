@@ -11,7 +11,7 @@ import SwiftUI
 struct BBQChickenApp: App {
     var body: some Scene {
         WindowGroup {
-            VersusView()
+            VersusView(viewModel: VersusViewModel(initialEmptyPlayers: 2))
         }
     }
 }

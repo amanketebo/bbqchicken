@@ -8,55 +8,34 @@
 import SwiftUI
 
 struct VersusView: View {
-    // MARK: - Properties
-    
-    @ObservedObject var viewModel = VersusViewModel()
 
-    @State var isPlayerOneAllPlayersViewPresented = false
-    @State var isPlayerTwoAllPlayersViewPresented = false
+    // MARK: - Properties
+
+    @ObservedObject var viewModel: VersusViewModel
+
+    // MARK: - View
 
     var body: some View {
         let edgeInsets = EdgeInsets(top: 25, leading: 0, bottom: 25, trailing: 0)
 
         NavigationView {
             List {
-                HStack {
-                    Spacer()
-                    Button(action: {
-                            isPlayerOneAllPlayersViewPresented = true
-                    }, label: {
-                        let playerViewModel = VersusPlayerViewModel(player: viewModel.playerOne)
-                        VersusPlayerView(viewModel: playerViewModel)
-                    })
-                    .sheet(isPresented: $isPlayerOneAllPlayersViewPresented) {
-                        let allPlayersViewModel = AllPlayersViewModel(statsService: StatsService(),
-                                                                      playersCache: viewModel.allPlayersCache)
-                        AllPlayersView(viewModel: allPlayersViewModel, onPlayerSelection: {
-                            viewModel.playerOne = $0
+                ForEach(Array(viewModel.players.enumerated()), id: \.offset) { index, player in
+                    HStack {
+                        Spacer()
+                        Button(action: { self.viewModel.isPresentedBindings[index] = true }, label: {
+                            VersusPlayerView(viewModel: VersusPlayerViewModel(player: player))
                         })
+                        .sheet(isPresented: self.$viewModel.isPresentedBindings[index]) {
+                            AllPlayersView(viewModel: AllPlayersViewModel(playersCache: viewModel.allPlayersCache),
+                                           onPlayerSelection: { updatedPlayer in
+                                self.viewModel.players[index] = updatedPlayer
+                            })
+                        }
+                        Spacer()
                     }
-                    Spacer()
+                    .padding(edgeInsets)
                 }
-                .padding(edgeInsets)
-
-                HStack {
-                    Spacer()
-                    Button(action: {
-                            isPlayerTwoAllPlayersViewPresented = true
-                    }, label: {
-                        let playerViewModel = VersusPlayerViewModel(player: viewModel.playerTwo)
-                        VersusPlayerView(viewModel: playerViewModel)
-                    })
-                    .sheet(isPresented: $isPlayerTwoAllPlayersViewPresented) {
-                        let allPlayersViewModel = AllPlayersViewModel(statsService: StatsService(),
-                                                                      playersCache: viewModel.allPlayersCache)
-                        AllPlayersView(viewModel: allPlayersViewModel, onPlayerSelection: {
-                            viewModel.playerTwo = $0
-                        })
-                    }
-                    Spacer()
-                }
-                .padding(edgeInsets)
             }
             .listStyle(InsetListStyle())
             .navigationBarTitle("🍗 BBQ Chicken")
@@ -65,20 +44,22 @@ struct VersusView: View {
 }
 
 struct VersusView_Previews: PreviewProvider {
+
+    // MARK: - PreviewProvider
+
     static var previews: some View {
-        let emptyViewModel = VersusViewModel(playerOne: nil,
-                                             playerTwo: nil)
-        let fullViewModel = VersusViewModel(playerOne: MockPlayers.kobeBryant,
-                                            playerTwo: MockPlayers.dwayneWade)
+        let emptyViewModel = VersusViewModel(initialEmptyPlayers: 2)
+        let populatedViewModel = VersusViewModel(initialPlayers: [MockPlayers.kobeBryant, MockPlayers.jamesHarden])
+
         Group {
             ForEach(ColorScheme.allCases, id: \.self) { colorScheme in
-                let deviceName = PreviewDevice(rawValue: "iPhone 12 Pro")
+                let previewDevice = PreviewDevice(rawValue: "iPhone 12 Pro")
                 
-                VersusView(viewModel: fullViewModel)
-                    .previewDevice(deviceName)
-                    .environment(\.colorScheme, colorScheme)
                 VersusView(viewModel: emptyViewModel)
-                    .previewDevice(deviceName)
+                    .previewDevice(previewDevice)
+                    .environment(\.colorScheme, colorScheme)
+                VersusView(viewModel: populatedViewModel)
+                    .previewDevice(previewDevice)
                     .environment(\.colorScheme, colorScheme)
             }
         }
