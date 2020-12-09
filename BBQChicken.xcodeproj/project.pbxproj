@@ -253,8 +253,8 @@
 		CAF075A825782D67009800E5 /* Versus */ = {
 			isa = PBXGroup;
 			children = (
-				CA425F102566F40E00CF944F /* VersusView.swift */,
 				CAE7EB37256C50510088701E /* VersusViewModel.swift */,
+				CA425F102566F40E00CF944F /* VersusView.swift */,
 			);
 			path = Versus;
 			sourceTree = "<group>";

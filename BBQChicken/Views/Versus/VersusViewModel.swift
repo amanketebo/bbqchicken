@@ -9,17 +9,35 @@ import Foundation
 import Combine
 
 class VersusViewModel: ObservableObject {
+
     // MARK: - Properties
 
-    @Published var playerOne: Player?
-    @Published var playerTwo: Player?
-    var allPlayersCache = PlayersCache()
+    @Published var players: [Player?]
+    @Published var isPresentedBindings: [Bool]
+    // TODO: (Aman) Move to environment object
+    var allPlayersCache: PlayersCache
 
     // MARK: - Init
 
-    init(playerOne: Player? = nil,
-         playerTwo: Player? = nil) {
-        self.playerOne = playerOne
-        self.playerTwo = playerTwo
+    init(initialEmptyPlayers: Int,
+         allPlayersCache: PlayersCache = PlayersCache()) {
+        var setUpPlayers: [Player?] = []
+        var setUpIsPresentedBindings: [Bool] = []
+
+        for _ in 0..<initialEmptyPlayers {
+            setUpPlayers.append(nil)
+            setUpIsPresentedBindings.append(false)
+        }
+
+        self.players = setUpPlayers
+        self.isPresentedBindings = setUpIsPresentedBindings
+        self.allPlayersCache = allPlayersCache
+    }
+
+    init(initialPlayers: [Player?],
+         allPlayersCache: PlayersCache = PlayersCache()) {
+        self.players = initialPlayers
+        self.isPresentedBindings = initialPlayers.map { _ in false }
+        self.allPlayersCache = allPlayersCache
     }
 }
