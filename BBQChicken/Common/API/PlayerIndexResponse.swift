@@ -43,7 +43,7 @@ struct PlayerIndexResponse: Decodable {
         let draftYear: Int?
         let draftRound: Int?
         let draftNumber: Int?
-        let rosterStatus: String?
+        let rosterStatus: Int?
         let pointsPerGame: Float?
         let reboundsPerGame: Float?
         let assistsPerGame: Float?
@@ -71,7 +71,7 @@ struct PlayerIndexResponse: Decodable {
             draftYear = try? container?.decodeIfPresent(Int.self)
             draftRound = try? container?.decodeIfPresent(Int.self)
             draftNumber = try? container?.decodeIfPresent(Int.self)
-            rosterStatus = try? container?.decodeIfPresent(String.self)
+            rosterStatus = try? container?.decodeIfPresent(Int.self)
             pointsPerGame = try container?.decodeIfPresent(Float.self)
             reboundsPerGame = try container?.decodeIfPresent(Float.self)
             assistsPerGame = try container?.decodeIfPresent(Float.self)

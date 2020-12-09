@@ -23,11 +23,13 @@ struct AllPlayersView: View {
                     viewModel.filter(for: updatedText)
                 })
                 List {
-                    Section(header: Text("Recent")) {
-                        ForEach(viewModel.recentPlayers, id: \.id) { recentPlayer in
-                            let playerRow = PlayerRow(player: recentPlayer)
-                            PlayerRowView(playerRow: playerRow) {
-                                savePlayerAndDismiss(recentPlayer)
+                    if !viewModel.recentPlayers.isEmpty {
+                        Section(header: Text("Recent")) {
+                            ForEach(viewModel.recentPlayers, id: \.id) { recentPlayer in
+                                let playerRow = PlayerRow(player: recentPlayer)
+                                PlayerRowView(playerRow: playerRow) {
+                                    savePlayerAndDismiss(recentPlayer)
+                                }
                             }
                         }
                     }
