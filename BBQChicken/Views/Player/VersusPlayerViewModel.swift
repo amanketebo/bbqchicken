@@ -12,8 +12,8 @@ struct VersusPlayerViewModel {
     // MARK: - Type
 
     enum Layout {
-        case compact
-        case expanded
+        case pickPlayer
+        case showStats
     }
 
     // MARK: - Properties

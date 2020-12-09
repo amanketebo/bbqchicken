@@ -15,7 +15,7 @@ struct VersusPlayerView: View {
     var body: some View {
         VStack(alignment: .center, spacing: 20) {
             switch viewModel.layout {
-            case .compact:
+            case .showStats:
                 HStack {
                     InitialsView(text: viewModel.initialsText)
                         .frame(width: 75, height: 75, alignment: .center)
@@ -25,7 +25,7 @@ struct VersusPlayerView: View {
                     Spacer()
                 }
 
-            case .expanded:
+            case .pickPlayer:
                 InitialsView(text: viewModel.initialsText)
                     .frame(width: 150, height: 150, alignment: .center)
                 Text(viewModel.fullNameText)
