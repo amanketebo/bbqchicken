@@ -30,7 +30,7 @@ class VersusViewModel: ObservableObject {
         self.allPlayersCache = allPlayersCache
     }
 
-    init(initialPlayers: [Player?],
+    init(initialPlayers: [Player],
          allPlayersCache: PlayersCache = PlayersCache()) {
         self.players = initialPlayers
         self.allPlayersCache = allPlayersCache
