@@ -12,21 +12,20 @@ struct VersusView: View {
     // MARK: - Properties
 
     @ObservedObject var viewModel: VersusViewModel
+    @State var isAllPlayersPresented = false
 
     // MARK: - View
 
     var body: some View {
-        let edgeInsets = EdgeInsets(top: 25, leading: 0, bottom: 25, trailing: 0)
-
         NavigationView {
             List {
                 ForEach(Array(viewModel.players.enumerated()), id: \.offset) { index, player in
                     HStack {
                         Spacer()
-                        Button(action: { self.viewModel.isPresentedBindings[index] = true }, label: {
+                        Button(action: { isAllPlayersPresented = true }, label: {
                             VersusPlayerView(viewModel: VersusPlayerViewModel(player: player))
                         })
-                        .sheet(isPresented: self.$viewModel.isPresentedBindings[index]) {
+                        .sheet(isPresented: self.$isAllPlayersPresented) {
                             AllPlayersView(viewModel: AllPlayersViewModel(playersCache: viewModel.allPlayersCache),
                                            onPlayerSelection: { updatedPlayer in
                                 self.viewModel.players[index] = updatedPlayer
@@ -34,7 +33,7 @@ struct VersusView: View {
                         }
                         Spacer()
                     }
-                    .padding(edgeInsets)
+                    .padding(EdgeInsets(top: 25, leading: 0, bottom: 25, trailing: 0))
                 }
             }
             .listStyle(InsetListStyle())
