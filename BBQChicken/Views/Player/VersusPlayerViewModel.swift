@@ -22,6 +22,7 @@ struct VersusPlayerViewModel {
     let fullNameText:  String
     let statRows: [StatRow]
     let layout: Layout
+    let shouldShowCollapseButton: Bool
     
     // MARK: - Init
 
@@ -42,5 +43,7 @@ struct VersusPlayerViewModel {
             statRows = []
             layout = .pickPlayer
         }
+
+        shouldShowCollapseButton = player != nil
     }
 }
