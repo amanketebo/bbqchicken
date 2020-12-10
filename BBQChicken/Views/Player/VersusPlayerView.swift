@@ -20,7 +20,6 @@ struct VersusPlayerView: View {
                 HStack {
                     Button(action: {
                         isCollapsed.toggle()
-                        print("whhat")
                     }, label: {
                         if isCollapsed {
                             Image(systemName: "chevron.down.circle.fill")
