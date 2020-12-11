@@ -262,8 +262,8 @@
 		CAF075AA25782D87009800E5 /* Player */ = {
 			isa = PBXGroup;
 			children = (
-				CAC242CE256EC7D1001CCC80 /* VersusPlayerView.swift */,
 				CAC16F30256C5A180020B261 /* VersusPlayerViewModel.swift */,
+				CAC242CE256EC7D1001CCC80 /* VersusPlayerView.swift */,
 				CAF0F044256EFEF90083D7E3 /* InitialsView.swift */,
 				CAC16F2D256C58980020B261 /* StatRow.swift */,
 			);

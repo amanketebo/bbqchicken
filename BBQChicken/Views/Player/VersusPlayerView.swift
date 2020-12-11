@@ -13,14 +13,18 @@ struct VersusPlayerView: View {
     
     var viewModel: VersusPlayerViewModel
     @State private var isCollapsed = false
+    private let animation = Animation.linear(duration: 0.1)
+
+    // MARK: - View
 
     var body: some View {
         ZStack {
             if viewModel.shouldShowCollapseButton {
                 HStack {
                     Button(action: {
-                        isCollapsed.toggle()
-                        print("whhat")
+                        withAnimation(animation) {
+                            isCollapsed.toggle()
+                        }
                     }, label: {
                         if isCollapsed {
                             Image(systemName: "chevron.down.circle.fill")
@@ -50,6 +54,14 @@ struct VersusPlayerView: View {
                             .foregroundColor(.primary)
                         Spacer()
                     }
+                    .frame(minWidth: 100,
+                           idealWidth: .infinity,
+                           maxWidth: .infinity,
+                           minHeight: 100,
+                           idealHeight: 100,
+                           maxHeight: .infinity,
+                           alignment: .center)
+                    .animation(animation)
 
                 case .pickPlayer:
                     InitialsView(text: viewModel.initialsText)
@@ -73,6 +85,14 @@ struct VersusPlayerView: View {
                     }
                 }
             }
+            .frame(minWidth: 100,
+                   idealWidth: .infinity,
+                   maxWidth: .infinity,
+                   minHeight: 100,
+                   idealHeight: isCollapsed ? 100 : 200 ,
+                   maxHeight: isCollapsed ? 100 : 200,
+                   alignment: .center)
+            .animation(animation)
         }
     }
 }
