@@ -51,7 +51,7 @@ struct VersusView_Previews: PreviewProvider {
     // MARK: - PreviewProvider
 
     static var previews: some View {
-        let emptyViewModel = VersusViewModel(initialEmptyPlayers: 2)
+        let emptyViewModel = VersusViewModel(initialPlayers: [nil, nil])
         let populatedViewModel = VersusViewModel(initialPlayers: [MockPlayers.kobeBryant, MockPlayers.jamesHarden])
 
         Group {
