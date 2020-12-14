@@ -36,13 +36,20 @@ struct VersusView: View {
                     }
                     .padding(EdgeInsets(top: 25, leading: 0, bottom: 25, trailing: 0))
                 }
+                .onMove(perform: move)
             }
             .listStyle(InsetListStyle())
             .navigationBarTitle("🍗 BBQ Chicken")
+            .navigationBarItems(leading: EditButton())
             .onAppear {
                 viewModel.fetchState()
             }
         }
+    }
+
+    func move(from source: IndexSet, to destination: Int) {
+        viewModel.players.move(fromOffsets: source, toOffset: destination)
+        viewModel.saveState()
     }
 }
 
