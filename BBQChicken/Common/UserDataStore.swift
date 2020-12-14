@@ -19,7 +19,11 @@ class UserDataStore {
 
     // MARK: - Properties
 
-    var recentlySelectedPlayers: [Player] {
+    var versusViewPlayers: [Player?] {
+        return fetch(type: [Player?].self, forKey: Keys.versusViewPlayers) ?? []
+    }
+
+    var selectedPlayers: [Player] {
         guard let players = fetch(type: [Player].self, forKey: Keys.recentlySelectedPlayers) else {
             return []
         }
@@ -28,11 +32,7 @@ class UserDataStore {
     }
 
     var lastSelectedPlayer: Player? {
-        return fetch(type: Player.self, forKey: Keys.lastSelectedPlayer)
-    }
-
-    var versusViewPlayers: [Player?] {
-        return fetch(type: [Player?].self, forKey: Keys.versusViewPlayers) ?? []
+        return fetch(type: [Player].self, forKey: Keys.recentlySelectedPlayers)?.last
     }
 
     private let recentSelectedPlayersLimit: Int
@@ -46,33 +46,27 @@ class UserDataStore {
         self.userDefaults = userDefaults
     }
 
-    // MARK: - Saving
-
-    func save(_ player: Player) {
-        save(lastSelectedPlayer: player)
-        WidgetCenter.shared.reloadAllTimelines()
-        updateRecentlySelectedPlayers(with: player)
-    }
+    // MARK: - Storing
 
     func storeVersusViewPlayers(_ players: [Player?]) {
         store(value: players, forKey: Keys.versusViewPlayers)
     }
 
-    private func save(lastSelectedPlayer: Player) {
-        store(value: lastSelectedPlayer, forKey: Keys.lastSelectedPlayer)
+    func storeLastSelectedPlayer(_ player: Player) {
+        storeSelectedPlayers(with: player)
     }
 
-    private func updateRecentlySelectedPlayers(with player: Player) {
-        let selectedPlayers = recentlySelectedPlayers
+    private func storeSelectedPlayers(with player: Player) {
+        let selectedPlayers = self.selectedPlayers
 
         guard !selectedPlayers.contains(player) else {
             return
         }
 
-        var lastPlayersSaved = Array(selectedPlayers.suffix(recentSelectedPlayersLimit - 1))
-        lastPlayersSaved.append(player)
+        var recentlySelectedPlayers = Array(selectedPlayers.suffix(recentSelectedPlayersLimit - 1))
+        recentlySelectedPlayers.append(player)
 
-        store(value: lastSelectedPlayer, forKey: Keys.recentlySelectedPlayers)
+        store(value: recentlySelectedPlayers, forKey: Keys.recentlySelectedPlayers)
     }
 
     // MARK: - Helpers
