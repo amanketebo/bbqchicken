@@ -29,6 +29,7 @@ struct VersusView: View {
                             AllPlayersView(viewModel: AllPlayersViewModel(playersCache: viewModel.allPlayersCache),
                                            onPlayerSelection: { updatedPlayer in
                                 self.viewModel.players[index] = updatedPlayer
+                                viewModel.saveState()
                             })
                         }
                         Spacer()
@@ -38,6 +39,9 @@ struct VersusView: View {
             }
             .listStyle(InsetListStyle())
             .navigationBarTitle("🍗 BBQ Chicken")
+            .onAppear {
+                viewModel.fetchState()
+            }
         }
     }
 }
@@ -47,7 +51,7 @@ struct VersusView_Previews: PreviewProvider {
     // MARK: - PreviewProvider
 
     static var previews: some View {
-        let emptyViewModel = VersusViewModel(initialEmptyPlayers: 2)
+        let emptyViewModel = VersusViewModel(initialPlayers: [nil, nil])
         let populatedViewModel = VersusViewModel(initialPlayers: [MockPlayers.kobeBryant, MockPlayers.jamesHarden])
 
         Group {

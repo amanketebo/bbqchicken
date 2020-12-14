@@ -28,6 +28,7 @@
 		CA425F162566F41100CF944F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA425F152566F41100CF944F /* Preview Assets.xcassets */; };
 		CA425F1F2566F49900CF944F /* StatsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA425F1E2566F49900CF944F /* StatsService.swift */; };
 		CA6D7B0B25783FA8008B1E92 /* PlayerRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6D7B0A25783FA8008B1E92 /* PlayerRowView.swift */; };
+		CA751CE12587BC7C003DDFD7 /* VersusViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA751CE02587BC7C003DDFD7 /* VersusViewModelTests.swift */; };
 		CA7B83A7257FFAB700126CEE /* MockPlayers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7B83A6257FFAB700126CEE /* MockPlayers.swift */; };
 		CA7B83A8257FFAB700126CEE /* MockPlayers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7B83A6257FFAB700126CEE /* MockPlayers.swift */; };
 		CA7B83AD257FFD8A00126CEE /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7B83A0257FFA7200126CEE /* Provider.swift */; };
@@ -58,6 +59,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = CA0ADFD8257E890000EA0331;
 			remoteInfo = BBQChickenWidgetExtension;
+		};
+		CA751CE32587BC7C003DDFD7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CA425F032566F40E00CF944F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CA425F0A2566F40E00CF944F;
+			remoteInfo = BBQChicken;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -95,6 +103,9 @@
 		CA425F172566F41100CF944F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA425F1E2566F49900CF944F /* StatsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsService.swift; sourceTree = "<group>"; };
 		CA6D7B0A25783FA8008B1E92 /* PlayerRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerRowView.swift; sourceTree = "<group>"; };
+		CA751CDE2587BC7C003DDFD7 /* BBQChickenTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BBQChickenTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA751CE02587BC7C003DDFD7 /* VersusViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersusViewModelTests.swift; sourceTree = "<group>"; };
+		CA751CE22587BC7C003DDFD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA7B83A0257FFA7200126CEE /* Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
 		CA7B83A6257FFAB700126CEE /* MockPlayers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPlayers.swift; sourceTree = "<group>"; };
 		CA7B83B2257FFEC000126CEE /* SimpleEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleEntry.swift; sourceTree = "<group>"; };
@@ -129,6 +140,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		CA425F082566F40E00CF944F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CA751CDB2587BC7C003DDFD7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -179,6 +197,7 @@
 				CA7B83CF25803B7900126CEE /* BBQChickenWidgetExtension.entitlements */,
 				CA425F0D2566F40E00CF944F /* BBQChicken */,
 				CA0ADFDF257E890000EA0331 /* BBQChickenWidget */,
+				CA751CDF2587BC7C003DDFD7 /* BBQChickenTests */,
 				CA0ADFDA257E890000EA0331 /* Frameworks */,
 				CA425F0C2566F40E00CF944F /* Products */,
 			);
@@ -189,6 +208,7 @@
 			children = (
 				CA425F0B2566F40E00CF944F /* BBQChicken.app */,
 				CA0ADFD9257E890000EA0331 /* BBQChickenWidgetExtension.appex */,
+				CA751CDE2587BC7C003DDFD7 /* BBQChickenTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -213,6 +233,15 @@
 				CA425F152566F41100CF944F /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		CA751CDF2587BC7C003DDFD7 /* BBQChickenTests */ = {
+			isa = PBXGroup;
+			children = (
+				CA751CE02587BC7C003DDFD7 /* VersusViewModelTests.swift */,
+				CA751CE22587BC7C003DDFD7 /* Info.plist */,
+			);
+			path = BBQChickenTests;
 			sourceTree = "<group>";
 		};
 		CAC242CA256EC076001CCC80 /* Mocks */ = {
@@ -319,6 +348,24 @@
 			productReference = CA425F0B2566F40E00CF944F /* BBQChicken.app */;
 			productType = "com.apple.product-type.application";
 		};
+		CA751CDD2587BC7C003DDFD7 /* BBQChickenTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CA751CE72587BC7C003DDFD7 /* Build configuration list for PBXNativeTarget "BBQChickenTests" */;
+			buildPhases = (
+				CA751CDA2587BC7C003DDFD7 /* Sources */,
+				CA751CDB2587BC7C003DDFD7 /* Frameworks */,
+				CA751CDC2587BC7C003DDFD7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CA751CE42587BC7C003DDFD7 /* PBXTargetDependency */,
+			);
+			name = BBQChickenTests;
+			productName = BBQChickenTests;
+			productReference = CA751CDE2587BC7C003DDFD7 /* BBQChickenTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -333,6 +380,10 @@
 					};
 					CA425F0A2566F40E00CF944F = {
 						CreatedOnToolsVersion = 12.2;
+					};
+					CA751CDD2587BC7C003DDFD7 = {
+						CreatedOnToolsVersion = 12.2;
+						TestTargetID = CA425F0A2566F40E00CF944F;
 					};
 				};
 			};
@@ -351,6 +402,7 @@
 			targets = (
 				CA425F0A2566F40E00CF944F /* BBQChicken */,
 				CA0ADFD8257E890000EA0331 /* BBQChickenWidgetExtension */,
+				CA751CDD2587BC7C003DDFD7 /* BBQChickenTests */,
 			);
 		};
 /* End PBXProject section */
@@ -370,6 +422,13 @@
 			files = (
 				CA425F162566F41100CF944F /* Preview Assets.xcassets in Resources */,
 				CA425F132566F41100CF944F /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CA751CDC2587BC7C003DDFD7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -426,6 +485,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CA751CDA2587BC7C003DDFD7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CA751CE12587BC7C003DDFD7 /* VersusViewModelTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -433,6 +500,11 @@
 			isa = PBXTargetDependency;
 			target = CA0ADFD8257E890000EA0331 /* BBQChickenWidgetExtension */;
 			targetProxy = CA0ADFE8257E890200EA0331 /* PBXContainerItemProxy */;
+		};
+		CA751CE42587BC7C003DDFD7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CA425F0A2566F40E00CF944F /* BBQChicken */;
+			targetProxy = CA751CE32587BC7C003DDFD7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -645,6 +717,46 @@
 			};
 			name = Release;
 		};
+		CA751CE52587BC7C003DDFD7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6Z5EK2Z6N5;
+				INFOPLIST_FILE = BBQChickenTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.amanketebo.BBQChickenTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BBQChicken.app/BBQChicken";
+			};
+			name = Debug;
+		};
+		CA751CE62587BC7C003DDFD7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6Z5EK2Z6N5;
+				INFOPLIST_FILE = BBQChickenTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.amanketebo.BBQChickenTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BBQChicken.app/BBQChicken";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -671,6 +783,15 @@
 			buildConfigurations = (
 				CA425F1B2566F41100CF944F /* Debug */,
 				CA425F1C2566F41100CF944F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CA751CE72587BC7C003DDFD7 /* Build configuration list for PBXNativeTarget "BBQChickenTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CA751CE52587BC7C003DDFD7 /* Debug */,
+				CA751CE62587BC7C003DDFD7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

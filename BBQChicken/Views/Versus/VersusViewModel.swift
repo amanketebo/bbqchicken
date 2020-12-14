@@ -12,27 +12,31 @@ class VersusViewModel: ObservableObject {
 
     // MARK: - Properties
 
+    static let initialPlayers: [Player?] = [nil, nil]
+
     @Published var players: [Player?]
     // TODO: (Aman) Move to environment object
     var allPlayersCache: PlayersCache
+    var userDataStore: UserDataStore
 
     // MARK: - Init
 
-    init(initialEmptyPlayers: Int,
-         allPlayersCache: PlayersCache = PlayersCache()) {
-        var setUpPlayers: [Player?] = []
-
-        for _ in 0..<initialEmptyPlayers {
-            setUpPlayers.append(nil)
-        }
-
-        self.players = setUpPlayers
-        self.allPlayersCache = allPlayersCache
-    }
-
-    init(initialPlayers: [Player],
-         allPlayersCache: PlayersCache = PlayersCache()) {
+    init(initialPlayers: [Player?] = VersusViewModel.initialPlayers,
+         allPlayersCache: PlayersCache = PlayersCache(),
+         userDataStore: UserDataStore = UserDataStore()) {
         self.players = initialPlayers
         self.allPlayersCache = allPlayersCache
+        self.userDataStore = userDataStore
+    }
+
+    // MARK: - Setting Up Players
+
+    func fetchState() {
+        let versusViewPlayers = userDataStore.versusViewPlayers
+        players = versusViewPlayers.isEmpty ? VersusViewModel.initialPlayers : versusViewPlayers
+    }
+
+    func saveState() {
+        userDataStore.storeVersusViewPlayers(players)
     }
 }
