@@ -24,8 +24,8 @@ final class VersusViewModelTests: XCTestCase {
 
     func testVersusViewModelStoring_givenStateIsSavedWithTwoPlayers_fetchStateReturnsCorrectArray() {
         let testUserDataStore = UserDataStore(userDefaults: testUserDefaults)
-        let versusViewModel = VersusViewModel(initialEmptyPlayers: 2, userDataStore: testUserDataStore)
         let mockPlayers = [MockPlayers.kobeBryant, MockPlayers.jamesHarden]
+        let versusViewModel = VersusViewModel(initialPlayers: mockPlayers, userDataStore: testUserDataStore)
 
         versusViewModel.players = mockPlayers
         versusViewModel.saveState()
@@ -38,8 +38,8 @@ final class VersusViewModelTests: XCTestCase {
 
     func testVersusViewModelStoring_givenStateIsSavedWithOnePlayerAndAnotherNilPlayer_fetchStateReturnsCorrectArray() {
         let testUserDataStore = UserDataStore(userDefaults: testUserDefaults)
-        let versusViewModel = VersusViewModel(initialEmptyPlayers: 2, userDataStore: testUserDataStore)
         let mockPlayers = [MockPlayers.kobeBryant, nil]
+        let versusViewModel = VersusViewModel(initialPlayers: mockPlayers, userDataStore: testUserDataStore)
 
         versusViewModel.players = mockPlayers
         versusViewModel.saveState()
