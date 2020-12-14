@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import WidgetKit
 
 class AllPlayersViewModel: ObservableObject {
     // MARK: - Properties
@@ -31,7 +32,7 @@ class AllPlayersViewModel: ObservableObject {
     // MARK: - Set Up
 
     func populatePlayers() {
-        recentPlayers = userDataStore.recentlySelectedPlayers
+        recentPlayers = userDataStore.selectedPlayers
         allPlayers = playersCache.allPlayers
         fetchAllPlayersIfNeeded()
     }
@@ -64,14 +65,14 @@ class AllPlayersViewModel: ObservableObject {
         let searchTextWithoutSpaces = searchText.trimmingCharacters(in: .whitespaces).lowercased()
 
         if searchText.isEmpty {
-            recentPlayers = userDataStore.recentlySelectedPlayers
+            recentPlayers = userDataStore.selectedPlayers
             allPlayers = playersCache.allPlayers
         } else {
             let filter: (Player) -> Bool = { player in
                 player.fullName.trimmingCharacters(in: .whitespaces).lowercased().contains(searchTextWithoutSpaces)
             }
 
-            recentPlayers = userDataStore.recentlySelectedPlayers.filter(filter)
+            recentPlayers = userDataStore.selectedPlayers.filter(filter)
             allPlayers = playersCache.allPlayers.filter(filter)
         }
     }
@@ -79,6 +80,7 @@ class AllPlayersViewModel: ObservableObject {
     // MARK: - Save
 
     func save(_ player: Player) {
-        userDataStore.save(player)
+        userDataStore.storeLastSelectedPlayer(player)
+        WidgetCenter.shared.reloadAllTimelines()
     }
 }
