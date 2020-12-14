@@ -14,35 +14,36 @@ class UserDataStore {
     private enum Keys {
         static let recentlySelectedPlayers = "recentlySelectedPlayers"
         static let lastSelectedPlayer = "lastSelectedPlayer"
+        static let versusViewPlayers = "versusViewPlayers"
     }
 
     // MARK: - Properties
 
-    let recentSelectedPlayersLimit: Int
-
     var recentlySelectedPlayers: [Player] {
-        guard let playersData = userDefaults?.data(forKey: Keys.recentlySelectedPlayers),
-              let recentlySelectedPlayers = try? JSONDecoder().decode([Player].self, from: playersData) else {
+        guard let players = fetch(type: [Player].self, forKey: Keys.recentlySelectedPlayers) else {
             return []
         }
 
-        return recentlySelectedPlayers.reversed()
+        return players.reversed()
     }
 
     var lastSelectedPlayer: Player? {
-        guard let playersData = userDefaults?.data(forKey: Keys.lastSelectedPlayer) else {
-            return nil
-        }
-
-        return try? JSONDecoder().decode(Player.self, from: playersData)
+        return fetch(type: Player.self, forKey: Keys.lastSelectedPlayer)
     }
 
-    private let userDefaults: UserDefaults? = UserDefaults(suiteName: "group.bbqchicken")
+    var versusViewPlayers: [Player?] {
+        return fetch(type: [Player?].self, forKey: Keys.versusViewPlayers) ?? []
+    }
+
+    private let recentSelectedPlayersLimit: Int
+    private let userDefaults: UserDefaults?
 
     // MARK: - Init
 
-    init(recentSelectedPlayersLimit: Int = 3) {
+    init(recentSelectedPlayersLimit: Int = 3,
+         userDefaults: UserDefaults? = UserDefaults(suiteName: "group.bbqchicken")) {
         self.recentSelectedPlayersLimit = recentSelectedPlayersLimit
+        self.userDefaults = userDefaults
     }
 
     // MARK: - Saving
@@ -53,24 +54,15 @@ class UserDataStore {
         updateRecentlySelectedPlayers(with: player)
     }
 
-    private func save(lastSelectedPlayer: Player) {
-        guard let userDefaults = userDefaults else {
-            return
-        }
+    func storeVersusViewPlayers(_ players: [Player?]) {
+        store(value: players, forKey: Keys.versusViewPlayers)
+    }
 
-        do {
-            let data = try JSONEncoder().encode(lastSelectedPlayer)
-            userDefaults.setValue(data, forKey: Keys.lastSelectedPlayer)
-        } catch {
-            print("Failed to save last selected player.")
-        }
+    private func save(lastSelectedPlayer: Player) {
+        store(value: lastSelectedPlayer, forKey: Keys.lastSelectedPlayer)
     }
 
     private func updateRecentlySelectedPlayers(with player: Player) {
-        guard let userDefaults = userDefaults else {
-            return
-        }
-
         let selectedPlayers = recentlySelectedPlayers
 
         guard !selectedPlayers.contains(player) else {
@@ -80,11 +72,29 @@ class UserDataStore {
         var lastPlayersSaved = Array(selectedPlayers.suffix(recentSelectedPlayersLimit - 1))
         lastPlayersSaved.append(player)
 
+        store(value: lastSelectedPlayer, forKey: Keys.recentlySelectedPlayers)
+    }
+
+    // MARK: - Helpers
+
+    private func fetch<T: Codable>(type: T.Type, forKey key: String) -> T? {
+        guard let data = userDefaults?.data(forKey: key) else {
+            return nil
+        }
+
+        return try? JSONDecoder().decode(type, from: data)
+    }
+
+    private func store<T: Codable>(value: T, forKey key: String) {
+        guard let userDefaults = userDefaults else {
+            return
+        }
+
         do {
-            let data = try JSONEncoder().encode(lastPlayersSaved)
-            userDefaults.setValue(data, forKey: Keys.recentlySelectedPlayers)
+            let data = try JSONEncoder().encode(value)
+            userDefaults.setValue(data, forKey: key)
         } catch {
-            print("Failed to update recently selected players.")
+            print("Failed to save value for key: \(value)")
         }
     }
 }

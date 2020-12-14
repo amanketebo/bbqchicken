@@ -29,6 +29,7 @@ struct VersusView: View {
                             AllPlayersView(viewModel: AllPlayersViewModel(playersCache: viewModel.allPlayersCache),
                                            onPlayerSelection: { updatedPlayer in
                                 self.viewModel.players[index] = updatedPlayer
+                                viewModel.saveState()
                             })
                         }
                         Spacer()
@@ -38,6 +39,9 @@ struct VersusView: View {
             }
             .listStyle(InsetListStyle())
             .navigationBarTitle("🍗 BBQ Chicken")
+            .onAppear {
+                viewModel.fetchState()
+            }
         }
     }
 }
