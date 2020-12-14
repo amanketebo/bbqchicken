@@ -78,7 +78,8 @@ class UserDataStore {
     // MARK: - Helpers
 
     private func fetch<T: Codable>(type: T.Type, forKey key: String) -> T? {
-        guard let data = userDefaults?.data(forKey: key) else {
+        guard let userDefaults = userDefaults,
+              let data = userDefaults.data(forKey: key) else {
             return nil
         }
 
