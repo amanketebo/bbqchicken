@@ -29,6 +29,7 @@
 		CA425F1F2566F49900CF944F /* StatsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA425F1E2566F49900CF944F /* StatsService.swift */; };
 		CA6D7B0B25783FA8008B1E92 /* PlayerRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6D7B0A25783FA8008B1E92 /* PlayerRowView.swift */; };
 		CA751CE12587BC7C003DDFD7 /* VersusViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA751CE02587BC7C003DDFD7 /* VersusViewModelTests.swift */; };
+		CA751CFD2587EE9D003DDFD7 /* UserDataStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA751CFC2587EE9D003DDFD7 /* UserDataStoreTests.swift */; };
 		CA7B83A7257FFAB700126CEE /* MockPlayers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7B83A6257FFAB700126CEE /* MockPlayers.swift */; };
 		CA7B83A8257FFAB700126CEE /* MockPlayers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7B83A6257FFAB700126CEE /* MockPlayers.swift */; };
 		CA7B83AD257FFD8A00126CEE /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7B83A0257FFA7200126CEE /* Provider.swift */; };
@@ -106,6 +107,7 @@
 		CA751CDE2587BC7C003DDFD7 /* BBQChickenTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BBQChickenTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA751CE02587BC7C003DDFD7 /* VersusViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersusViewModelTests.swift; sourceTree = "<group>"; };
 		CA751CE22587BC7C003DDFD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CA751CFC2587EE9D003DDFD7 /* UserDataStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataStoreTests.swift; sourceTree = "<group>"; };
 		CA7B83A0257FFA7200126CEE /* Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
 		CA7B83A6257FFAB700126CEE /* MockPlayers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPlayers.swift; sourceTree = "<group>"; };
 		CA7B83B2257FFEC000126CEE /* SimpleEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleEntry.swift; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 			isa = PBXGroup;
 			children = (
 				CA751CE02587BC7C003DDFD7 /* VersusViewModelTests.swift */,
+				CA751CFC2587EE9D003DDFD7 /* UserDataStoreTests.swift */,
 				CA751CE22587BC7C003DDFD7 /* Info.plist */,
 			);
 			path = BBQChickenTests;
@@ -489,6 +492,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA751CFD2587EE9D003DDFD7 /* UserDataStoreTests.swift in Sources */,
 				CA751CE12587BC7C003DDFD7 /* VersusViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
