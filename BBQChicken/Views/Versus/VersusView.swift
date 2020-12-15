@@ -58,6 +58,12 @@ struct VersusView: View {
 
     private func delete(from indexSet: IndexSet) {
         viewModel.players.remove(atOffsets: indexSet)
+
+        if viewModel.players.isEmpty {
+            viewModel.players = VersusViewModel.initialPlayers
+            editMode = .inactive
+        }
+
         viewModel.saveState()
     }
 }
