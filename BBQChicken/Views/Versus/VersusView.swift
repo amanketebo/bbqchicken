@@ -14,6 +14,8 @@ struct VersusView: View {
     @ObservedObject var viewModel: VersusViewModel
     @State var isAllPlayersPresented = false
 
+    @State private var editMode = EditMode.inactive
+
     // MARK: - View
 
     var body: some View {
@@ -37,18 +39,31 @@ struct VersusView: View {
                     .padding(EdgeInsets(top: 25, leading: 0, bottom: 25, trailing: 0))
                 }
                 .onMove(perform: move)
+                .onDelete(perform: delete)
             }
-            .listStyle(InsetListStyle())
-            .navigationBarTitle("🍗 BBQ Chicken")
             .navigationBarItems(leading: EditButton())
+            .navigationBarTitle("🍗 BBQ Chicken")
+            .listStyle(InsetListStyle())
             .onAppear {
                 viewModel.fetchState()
             }
+            .environment(\.editMode, $editMode)
         }
     }
 
-    func move(from source: IndexSet, to destination: Int) {
+    private func move(from source: IndexSet, to destination: Int) {
         viewModel.players.move(fromOffsets: source, toOffset: destination)
+        viewModel.saveState()
+    }
+
+    private func delete(from indexSet: IndexSet) {
+        viewModel.players.remove(atOffsets: indexSet)
+
+        if viewModel.players.isEmpty {
+            viewModel.players = VersusViewModel.initialPlayers
+            editMode = .inactive
+        }
+
         viewModel.saveState()
     }
 }
