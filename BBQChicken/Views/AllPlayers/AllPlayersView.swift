@@ -69,5 +69,6 @@ struct AllPlayersView_Previews: PreviewProvider {
         AllPlayersView(viewModel: viewModel,
                        onPlayerSelection: nil)
             .environment(\.colorScheme, ColorScheme.dark)
+            .environmentObject(AppFontFamilyProvider(fontFamily: .christmas))
     }
 }

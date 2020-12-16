@@ -12,6 +12,7 @@ struct BBQChickenApp: App {
     var body: some Scene {
         WindowGroup {
             VersusView(viewModel: VersusViewModel())
+                .environmentObject(AppFontFamilyProvider(fontFamily: .system))
         }
     }
 }

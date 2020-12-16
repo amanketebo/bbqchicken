@@ -88,5 +88,6 @@ struct VersusView_Previews: PreviewProvider {
                     .environment(\.colorScheme, colorScheme)
             }
         }
+        .environmentObject(AppFontFamilyProvider(fontFamily: .christmas))
     }
 }
