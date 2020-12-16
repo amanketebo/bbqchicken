@@ -14,6 +14,7 @@ struct PlayerRowView: View {
     var body: some View {
         HStack {
             Text(playerRow.text)
+                .font(appFont: .headline, weight: .regular)
                 .foregroundColor(.primary)
             Spacer()
         }
@@ -36,6 +37,7 @@ struct PlayerRowView_Previews: PreviewProvider {
                     .previewLayout(.sizeThatFits)
                     .environment(\.colorScheme, colorScheme)
                     .previewDisplayName("\(colorScheme)")
+                    .environmentObject(AppFontFamilyProvider(fontFamily: .system))
             }
         }
     }

@@ -50,7 +50,7 @@ struct VersusPlayerView: View {
                         InitialsView(text: viewModel.initialsText)
                             .frame(width: 75, height: 75, alignment: .center)
                         Text(viewModel.fullNameText)
-                            .font(.title)
+                            .font(appFont: .title, weight: .regular)
                             .foregroundColor(.primary)
                         Spacer()
                     }
@@ -67,7 +67,7 @@ struct VersusPlayerView: View {
                     InitialsView(text: viewModel.initialsText)
                         .frame(width: 150, height: 150, alignment: .center)
                     Text(viewModel.fullNameText)
-                        .font(.title)
+                        .font(appFont: .headline, weight: .regular)
                         .foregroundColor(.primary)
                 }
 
@@ -75,11 +75,11 @@ struct VersusPlayerView: View {
                     ForEach(viewModel.statRows) { viewModel in
                         HStack {
                             Text(viewModel.title)
-                                .fontWeight(.medium)
+                                .font(appFont: .headline, weight: .regular)
                                 .foregroundColor(.primary)
                             Spacer()
                             Text(viewModel.detail)
-                                .fontWeight(.bold)
+                                .font(appFont: .headline, weight: .bold)
                                 .foregroundColor(.primary)
                         }
                     }
@@ -104,7 +104,8 @@ struct VersusPlayerView_Previews: PreviewProvider {
         
         VersusPlayerView(viewModel: viewModel)
             .background(Color.background)
-            .previewLayout(.fixed(width: 300, height: 200))
+            .previewLayout(.fixed(width: 400, height: 400))
             .environment(\.colorScheme, colorScheme)
+            .environmentObject(AppFontFamilyProvider(fontFamily: .system))
     }
 }
